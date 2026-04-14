@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USGBC-CA | Membership / Member Hub User Journey — Current State</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --g900:#0B3D2E;--g700:#14674E;--g500:#1B9A73;--g300:#5FCAA5;--g100:#D1F0E4;--g50:#EEFBF5;
+  --a600:#D97706;--a100:#FEF3C7;
+  --r600:#DC2626;--r100:#FEE2E2;--r50:#FEF2F2;
+  --b600:#2563EB;--b100:#DBEAFE;
+  --p600:#7C3AED;--p100:#F3E8FF;
+  --s900:#0F172A;--s700:#334155;--s500:#64748B;--s400:#94A3B8;--s300:#CBD5E1;--s200:#E2E8F0;--s100:#F1F5F9;--s50:#F8FAFC;
+  --w:#FFFFFF;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+body{font-family:var(--sans);background:#F5F3F0;color:var(--s900);line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* ---- NAV ---- */
+.sticky-nav{position:sticky;top:0;z-index:100;background:var(--g900);padding:10px 24px;display:flex;align-items:center;gap:20px;overflow-x:auto;white-space:nowrap;border-bottom:2px solid var(--g500)}
+.sticky-nav a{font-family:var(--mono);font-size:11px;color:var(--g300);text-decoration:none;letter-spacing:0.5px;padding:4px 0;border-bottom:2px solid transparent;transition:all .2s}
+.sticky-nav a:hover,.sticky-nav a.active{color:var(--w);border-bottom-color:var(--g300)}
+.sticky-nav .nav-logo{font-family:var(--serif);font-size:16px;color:var(--w);margin-right:12px;flex-shrink:0}
+
+/* ---- LAYOUT ---- */
+.mx{max-width:1280px;margin:0 auto;padding:0 24px}
+section{padding:64px 0}
+section:first-of-type{padding-top:40px}
+
+/* ---- HEADER ---- */
+.hero{background:var(--g900);padding:72px 24px 56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(27,154,115,.12) 0%,transparent 70%)}
+.hero-inner{max-width:1280px;margin:0 auto;position:relative}
+.hero-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--g300);margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(36px,5.5vw,58px);color:var(--w);line-height:1.1;margin-bottom:20px;font-weight:400}
+.hero h1 em{font-style:italic;color:var(--g300)}
+.hero-desc{font-size:16px;color:var(--g300);max-width:640px;line-height:1.65;margin-bottom:28px}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap}
+.hero-meta span{font-family:var(--mono);font-size:11px;color:var(--g300);opacity:.7}
+
+/* ---- SECTION TITLES ---- */
+.sec-tag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:var(--s400);margin-bottom:8px}
+.sec-title{font-family:var(--serif);font-size:clamp(26px,4vw,38px);color:var(--s900);line-height:1.15;margin-bottom:8px;font-weight:400}
+.sec-desc{font-size:15px;color:var(--s500);max-width:680px;margin-bottom:36px;line-height:1.6}
+
+/* ---- PERSONA BAR ---- */
+.persona{background:var(--w);border:1px solid var(--s200);border-radius:14px;margin-top:-32px;position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+.persona-item{padding:24px;border-right:1px solid var(--s200)}
+.persona-item:last-child{border-right:none}
+.persona-item h3{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--s400);margin-bottom:8px}
+.persona-item p{font-size:13px;color:var(--s700);line-height:1.55}
+
+/* ---- FUNNEL ---- */
+.funnel-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.funnel-col{text-align:center}
+.funnel-bar-area{height:220px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:12px;position:relative}
+.funnel-bar{width:100%;border-radius:8px 8px 2px 2px;position:relative;transition:transform .2s;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60px}
+.funnel-bar:hover{transform:scaleY(1.02);transform-origin:bottom}
+.funnel-val{font-family:var(--serif);font-size:26px;color:var(--w);position:relative;z-index:1}
+.funnel-pct{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.7);position:relative;z-index:1;margin-top:2px}
+.funnel-lbl{font-size:12px;font-weight:600;color:var(--s700);line-height:1.3}
+.funnel-drop{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--r600);margin-top:4px}
+
+/* ---- KPI CARDS ---- */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+.kpi{background:var(--w);border:1px solid var(--s200);border-radius:10px;padding:20px;border-left:4px solid}
+.kpi-stat{font-family:var(--serif);font-size:30px;line-height:1;margin-bottom:6px}
+.kpi-text{font-size:12px;color:var(--s700);line-height:1.45}
+
+/* ---- UX AUDIT ---- */
+.audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.audit-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:24px;position:relative;overflow:hidden}
+.audit-card::before{content:attr(data-num);position:absolute;top:12px;right:16px;font-family:var(--serif);font-size:48px;color:var(--s100);line-height:1}
+.audit-card h3{font-family:var(--serif);font-size:18px;margin-bottom:8px;position:relative}
+.audit-severity{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;padding:3px 8px;border-radius:4px;margin-bottom:10px}
+.sev-high{background:var(--r100);color:var(--r600)}
+.sev-med{background:var(--a100);color:var(--a600)}
+.sev-low{background:var(--b100);color:var(--b600)}
+.audit-card p{font-size:13px;color:var(--s700);line-height:1.6;position:relative}
+
+/* ---- SYSTEMS MAP ---- */
+.sys-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.sys-node{padding:12px 16px;border-radius:8px;font-size:12px;font-weight:600;border:2px solid;flex-shrink:0}
+.sys-arrow{font-family:var(--mono);font-size:18px;color:var(--s300)}
+.sys-wp{background:#F5F3FF;border-color:#C4B5FD;color:#5B21B6}
+.sys-hl{background:#FFF7ED;border-color:#FDBA74;color:#9A3412}
+.sys-eb{background:#FEF2F2;border-color:#FECACA;color:#991B1B}
+.sys-mc{background:#ECFDF5;border-color:#A7F3D0;color:#065F46}
+.sys-lms{background:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}
+.sys-detail-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:16px}
+.sys-detail{padding:14px;border-radius:8px;border:1px solid var(--s200);background:var(--w)}
+.sys-detail h4{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.sys-detail p{font-size:11px;color:var(--s500);line-height:1.5}
+.sys-issue{font-family:var(--mono);font-size:10px;color:var(--r600);margin-top:6px;font-weight:500}
+
+/* ---- JOURNEY STAGES ---- */
+.stage{background:var(--w);border:1px solid var(--s200);border-radius:14px;margin-bottom:20px;overflow:hidden;transition:box-shadow .2s}
+.stage:hover{box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.stage-head{display:grid;grid-template-columns:48px 1fr auto auto;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;user-select:none}
+.stage-num{width:42px;height:42px;border-radius:50%;background:var(--g900);color:var(--w);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px}
+.stage-info h2{font-family:var(--serif);font-size:20px;font-weight:400}
+.stage-info .plat{font-family:var(--mono);font-size:10px;color:var(--s400);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.emo-badge{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.emo-hopeful{background:var(--g100);color:var(--g700)}
+.emo-confused{background:var(--a100);color:var(--a600)}
+.emo-frustrated{background:var(--r100);color:var(--r600)}
+.emo-motivated{background:var(--b100);color:var(--b600)}
+.emo-uncertain{background:var(--p100);color:var(--p600)}
+.emo-atrisk{background:var(--s100);color:var(--s700)}
+.chevron{font-size:18px;color:var(--s400);transition:transform .25s}
+.stage.open .chevron{transform:rotate(180deg)}
+
+.stage-body{display:none;padding:0 24px 24px}
+.stage.open .stage-body{display:block}
+.stage-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.col-card{padding:16px;border-radius:10px;background:var(--s50);border:1px solid var(--s100)}
+.col-card h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.col-card h4.act{color:var(--g700)}.col-card h4.pain{color:var(--r600)}.col-card h4.opp{color:var(--b600)}.col-card h4.ux{color:var(--p600)}
+.col-card ul{list-style:none;padding:0}
+.col-card li{font-size:12px;color:var(--s700);padding:4px 0 4px 14px;position:relative;line-height:1.5}
+.col-card li::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%}
+.col-card h4.act+ul li::before{background:var(--g500)}
+.col-card h4.pain+ul li::before{background:var(--r600)}
+.col-card h4.opp+ul li::before{background:var(--b600)}
+.col-card h4.ux+ul li::before{background:var(--p600)}
+.data-box{background:var(--g50);border:1px solid var(--g300);border-radius:8px;padding:12px 16px;margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--g900);line-height:1.6}
+.ux-box{background:var(--p100);border:1px solid #C4B5FD;border-radius:8px;padding:12px 16px;margin-top:8px;font-size:12px;color:#5B21B6;line-height:1.6}
+.ux-box strong{font-weight:700}
+
+/* ---- RECS ---- */
+.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rec{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:22px;border-left:4px solid}
+.rec-tag{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.rec h3{font-family:var(--serif);font-size:17px;margin-bottom:6px;font-weight:400}
+.rec p{font-size:12px;color:var(--s700);line-height:1.6}
+
+/* ---- FOOTER ---- */
+.foot{background:var(--g900);padding:28px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:960px){
+  .persona{grid-template-columns:1fr 1fr}
+  .persona-item:nth-child(2){border-right:none}
+  .kpi-grid,.audit-grid,.rec-grid{grid-template-columns:1fr}
+  .stage-cols{grid-template-columns:1fr}
+  .sys-detail-grid{grid-template-columns:1fr 1fr}
+  .funnel-wrap{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .persona{grid-template-columns:1fr}
+  .persona-item{border-right:none;border-bottom:1px solid var(--s200)}
+  .funnel-wrap{grid-template-columns:1fr 1fr}
+  .sys-detail-grid{grid-template-columns:1fr}
+  .stage-head{grid-template-columns:42px 1fr;gap:10px}
+  .emo-badge{grid-column:2;justify-self:start}
+}
+</style>
+</head>
+<body>
+
+<nav class="sticky-nav">
+  <span class="nav-logo">USGBC-CA</span>
+  <a href="#funnel">Funnel</a>
+  <a href="#ux-audit">UX Audit</a>
+  <a href="#systems">Systems Map</a>
+  <a href="#journey">Journey</a>
+  <a href="#recs">Recommendations</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Current-State Analysis · UX Audit + Behavioral Data</div>
+    <h1>Membership / <em>Member Hub User Journey</em></h1>
+    <p class="hero-desc">A combined UX heuristic evaluation and behavioral data analysis of the USGBC-CA membership experience and Community Hub — from first touchpoint through first value action — to inform the June platform renewal decision.</p>
+    <div class="hero-meta">
+      <span>Data: Feb 27 2025 – Feb 26 2026</span>
+      <span>Source: Higher Logic Admin (Verified)</span>
+      <span>UX Audit: usgbc-ca.org + Community Hub</span>
+      <span>April 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="mx">
+  <div class="persona">
+    <div class="persona-item">
+      <h3>User</h3>
+      <p>New USGBC-CA member — emerging professional or first-time member in the CA green building industry. Likely found USGBC-CA through an event, colleague, or newsletter.</p>
+    </div>
+    <div class="persona-item">
+      <h3>Goal</h3>
+      <p>Get immediate value from membership: access benefits/codes, find relevant programs, connect with peers in their region or specialty — all within the first session.</p>
+    </div>
+    <div class="persona-item">
+      <h3>Entry Point</h3>
+      <p>Receives confirmation email → clicks "Member Login" on usgbc-ca.org → lands on WordPress Member Dashboard → clicks into Higher Logic Community Hub.</p>
+    </div>
+    <div class="persona-item">
+      <h3>Constraints</h3>
+      <p>5 disconnected platforms. Small team managing all systems. No onboarding automation. Members often don't return after first login. Platform renewal due June 2026.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FUNNEL ============ -->
+<section id="funnel">
+<div class="mx">
+  <div class="sec-tag">Verified Data</div>
+  <div class="sec-title">The Drop-Off Funnel</div>
+  <p class="sec-desc">At every stage of the member journey, significant attrition reduces the pool of engaged members. Only 7% of registered members ever contribute content.</p>
+
+  <div class="funnel-wrap">
+    <div class="funnel-col">
+      <div class="funnel-bar-area"><div class="funnel-bar" style="height:220px;background:var(--g900)"><span class="funnel-val">1,202</span><span class="funnel-pct">100%</span></div></div>
+      <div class="funnel-lbl">Registered<br>(Agreed to Terms)</div>
+    </div>
+    <div class="funnel-col">
+      <div class="funnel-bar-area"><div class="funnel-bar" style="height:175px;background:var(--g700)"><span class="funnel-val">906</span><span class="funnel-pct">75.4%</span></div></div>
+      <div class="funnel-lbl">Logged In<br>(At Least Once)</div>
+      <div class="funnel-drop">−25% never log in</div>
+    </div>
+    <div class="funnel-col">
+      <div class="funnel-bar-area"><div class="funnel-bar" style="height:120px;background:var(--g500)"><span class="funnel-val">525</span><span class="funnel-pct">43.7%</span></div></div>
+      <div class="funnel-lbl">Joined a<br>Community</div>
+      <div class="funnel-drop">−42% don't join</div>
+    </div>
+    <div class="funnel-col">
+      <div class="funnel-bar-area"><div class="funnel-bar" style="height:100px;background:var(--a600)"><span class="funnel-val">436</span><span class="funnel-pct">36.3%</span></div></div>
+      <div class="funnel-lbl">Subscribed to<br>Updates</div>
+      <div class="funnel-drop">−17% no reminders</div>
+    </div>
+    <div class="funnel-col">
+      <div class="funnel-bar-area"><div class="funnel-bar" style="height:70px;background:var(--r600)"><span class="funnel-val">84</span><span class="funnel-pct">7.0%</span></div></div>
+      <div class="funnel-lbl">Contributed<br>Content</div>
+      <div class="funnel-drop">−81% silent</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi" style="border-left-color:var(--r600)"><div class="kpi-stat" style="color:var(--r600)">82.5%</div><div class="kpi-text">of threads received zero replies. The community feels silent to new members.</div></div>
+    <div class="kpi" style="border-left-color:var(--a600)"><div class="kpi-stat" style="color:var(--a600)">72.2%</div><div class="kpi-text">of all threads created by just 10 people. Community feels staff-broadcast, not peer-driven.</div></div>
+    <div class="kpi" style="border-left-color:var(--b600)"><div class="kpi-stat" style="color:var(--b600)">62%</div><div class="kpi-text">of search terms used only once. Members can't find what they're looking for.</div></div>
+    <div class="kpi" style="border-left-color:var(--g500)"><div class="kpi-stat" style="color:var(--g500)">24%</div><div class="kpi-text">wrote a bio. Only 31% uploaded a photo. Profile completion is low across the board.</div></div>
+  </div>
+
+  <div style="margin-top:32px;background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+    <div style="text-align:center;padding:12px">
+      <div style="font-family:var(--serif);font-size:18px;color:var(--g900);margin-bottom:6px">1. Do members show up?</div>
+      <div style="font-size:12px;color:var(--s500)">Adoption — 75% log in, 25% never return</div>
+    </div>
+    <div style="text-align:center;padding:12px">
+      <div style="font-family:var(--serif);font-size:18px;color:var(--g900);margin-bottom:6px">2. Do they get value?</div>
+      <div style="font-size:12px;color:var(--s500)">Resources, programs, events, learning clicks</div>
+    </div>
+    <div style="text-align:center;padding:12px">
+      <div style="font-family:var(--serif);font-size:18px;color:var(--g900);margin-bottom:6px">3. Do they get responses?</div>
+      <div style="font-size:12px;color:var(--s500)">Trust + collaboration loop — 82.5% get silence</div>
+    </div>
+    <div style="text-align:center;padding:12px">
+      <div style="font-family:var(--serif);font-size:18px;color:var(--g900);margin-bottom:6px">4. What's breaking?</div>
+      <div style="font-size:12px;color:var(--s500)">Findability, confusion, duplication, friction</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ UX AUDIT ============ -->
+<section id="ux-audit" style="background:var(--w);border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)">
+<div class="mx">
+  <div class="sec-tag">UX Heuristic Evaluation</div>
+  <div class="sec-title">Eight Critical UX Findings</div>
+  <p class="sec-desc">A first-person walkthrough of the member experience from usgbc-ca.org through the Community Hub reveals systemic design and information architecture issues beyond what the data alone shows.</p>
+
+  <div class="audit-grid">
+    <div class="audit-card" data-num="01">
+      <span class="audit-severity sev-high">High Severity</span>
+      <h3>Visual & Brand Disconnection Across Platforms</h3>
+      <p>The WordPress site, login page, and Higher Logic Community Hub are three completely different visual experiences — different nav, layout, typography, and color. A new member clicking from the dashboard to the Hub feels like they've left the organization's website entirely. This erodes trust and orientation at the moment they need it most.</p>
+    </div>
+    <div class="audit-card" data-num="02">
+      <span class="audit-severity sev-high">High Severity</span>
+      <h3>No First-Visit Experience on Either Platform</h3>
+      <p>Neither the WordPress dashboard nor the Higher Logic Hub has any first-time-user detection. No tooltips, no guided tour, no "Welcome — here's what to do first" overlay. The member is dropped into a complex interface and expected to self-navigate across 5 platforms. The 15% profile completion badge reads as a guilt metric, not an invitation.</p>
+    </div>
+    <div class="audit-card" data-num="03">
+      <span class="audit-severity sev-high">High Severity</span>
+      <h3>Information Architecture is Org-Centric, Not Member-Centric</h3>
+      <p>The site is organized by what the org does (16+ programs, 10 regions, 6+ certificates, 7+ tools) — not by what a member needs. There's no "You're a new member — here's your path" anywhere. The homepage "Find Your Path" section links to career pages, not the member experience. The Hub homepage is feed-first, which buries value behind a social-media-style interface.</p>
+    </div>
+    <div class="audit-card" data-num="04">
+      <span class="audit-severity sev-high">High Severity</span>
+      <h3>Feed-First Hub Landing Backfires for New Members</h3>
+      <p>The Community Hub homepage shows a large conference banner, then jumps to a discussion feed. For a new member who knows no one, seeing posts from strangers with low engagement is the opposite of welcoming. The "My Communities Quick List" is empty until they join — but joining requires knowing what to join. This creates a cold-start problem.</p>
+    </div>
+    <div class="audit-card" data-num="05">
+      <span class="audit-severity sev-med">Medium Severity</span>
+      <h3>Login Page is a Dead End</h3>
+      <p>The login page says "access their exclusive Community Hub, Member Events, and Membership Portal" — three destinations with no explanation of what each is or which to pick. After login, you land on the WordPress dashboard, but the Hub requires another click. There is zero wayfinding between these platforms.</p>
+    </div>
+    <div class="audit-card" data-num="06">
+      <span class="audit-severity sev-med">Medium Severity</span>
+      <h3>Navigation Trap Between Platforms</h3>
+      <p>The WordPress nav and Higher Logic nav are completely separate systems. Once in the Hub, there's no clear path back to the main site. The Hub's Quick Links include "My Member Dashboard" (back to WordPress). Members bounce between two separate nav systems with no contextual map of where they are.</p>
+    </div>
+    <div class="audit-card" data-num="07">
+      <span class="audit-severity sev-med">Medium Severity</span>
+      <h3>Welcome Email Sender Domain & Content Mismatch</h3>
+      <p>The welcome email comes from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f8b5999194b89b9796969d9b8c9d9c9b9795958d96918c81d6978a9f">[email&#160;protected]</a> — not usgbc-ca.org. For a new member, this looks like spam. The email's 3 tasks (LinkedIn, directory, say hello) are networking-first, but the Hub's 82.5% unanswered thread rate means networking is the riskiest possible first action. The email sets up an expectation the platform can't deliver on.</p>
+    </div>
+    <div class="audit-card" data-num="08">
+      <span class="audit-severity sev-low">Low Severity</span>
+      <h3>Duplicate Content Creates "Where Does X Live?" Confusion</h3>
+      <p>Events live on both the main site (Eventbrite/Swoogo) AND the Hub (Higher Logic events). The member directory is accessible from main nav AND Hub. Discount codes are on the Hub but referenced on the dashboard. Members can't build a mental model of "where does X live" — confirmed by 334 unique search terms with 62% used only once.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ SYSTEMS MAP ============ -->
+<section id="systems">
+<div class="mx">
+  <div class="sec-tag">Systems Thinking</div>
+  <div class="sec-title">The Platform Ecosystem</div>
+  <p class="sec-desc">Members navigate 5 disconnected platforms with separate logins, separate navigation, and no shared context. This is the root cause of the "where do I go for what?" problem.</p>
+
+  <div style="font-family:var(--mono);font-size:11px;color:var(--s500);margin-bottom:16px;letter-spacing:0.5px">MEMBER'S ACTUAL NAVIGATION PATH (FIRST SESSION)</div>
+
+  <div class="sys-flow">
+    <div class="sys-node sys-mc">Email<br><small>Mailchimp / HL</small></div>
+    <div class="sys-arrow">→</div>
+    <div class="sys-node sys-wp">usgbc-ca.org<br><small>WordPress</small></div>
+    <div class="sys-arrow">→</div>
+    <div class="sys-node sys-wp">Login Page<br><small>WordPress</small></div>
+    <div class="sys-arrow">→</div>
+    <div class="sys-node sys-wp">Member Dashboard<br><small>WordPress</small></div>
+    <div class="sys-arrow">→</div>
+    <div class="sys-node sys-hl">Community Hub<br><small>Higher Logic</small></div>
+    <div class="sys-arrow">⇆</div>
+    <div class="sys-node sys-eb">Events<br><small>Eventbrite</small></div>
+    <div class="sys-arrow">⇆</div>
+    <div class="sys-node sys-lms">Learning Center<br><small>Path LMS</small></div>
+  </div>
+
+  <div class="sys-detail-grid">
+    <div class="sys-detail">
+      <h4 style="color:#5B21B6">WordPress</h4>
+      <p>Main site, login, member dashboard, membership pages, blog, programs</p>
+      <div class="sys-issue">⚠ Dashboard has 6 tasks with no priority order</div>
+    </div>
+    <div class="sys-detail">
+      <h4 style="color:#9A3412">Higher Logic</h4>
+      <p>Community Hub, discussions, resource library, member directory, events</p>
+      <div class="sys-issue">⚠ Different nav, visual identity, and UX from main site</div>
+    </div>
+    <div class="sys-detail">
+      <h4 style="color:#991B1B">Eventbrite / Swoogo</h4>
+      <p>Event registration and ticketing for trainings, conferences, forums</p>
+      <div class="sys-issue">⚠ Duplicated with Higher Logic events calendar</div>
+    </div>
+    <div class="sys-detail">
+      <h4 style="color:#065F46">Mailchimp</h4>
+      <p>Marketing emails, newsletters. Higher Logic also sends system emails separately</p>
+      <div class="sys-issue">⚠ Two email systems = inconsistent sender identity</div>
+    </div>
+    <div class="sys-detail">
+      <h4 style="color:#1E40AF">Path LMS</h4>
+      <p>Training, certificates, continuing education, on-demand content</p>
+      <div class="sys-issue">⚠ Separate login, separate domain (pathlms.com)</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section id="journey" style="background:var(--w);border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)">
+<div class="mx">
+  <div class="sec-tag">Current-State Journey</div>
+  <div class="sec-title">The Six-Stage Member Hub Journey</div>
+  <p class="sec-desc">Each stage maps key actions, data-backed pain points, UX findings from the heuristic evaluation, and opportunities — click each stage to expand.</p>
+
+  <!-- STAGE 1 -->
+  <div class="stage open" onclick="this.classList.toggle('open')">
+    <div class="stage-head">
+      <div class="stage-num">1</div>
+      <div class="stage-info"><h2>Welcome Email</h2><div class="plat">Higher Logic System Email → Gmail / Outlook</div></div>
+      <span class="emo-badge emo-hopeful">Hopeful</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-cols">
+        <div class="col-card"><h4 class="act">▸ Key Actions</h4><ul>
+          <li>Receives "Welcome to USGBC California Community!" from Kim Krempien</li>
+          <li>Reads 3-task new member challenge: connect LinkedIn, visit directory, find regional community</li>
+          <li>Clicks through to Community Hub for the first time</li>
+          <li>Tries to understand "what do I do first?"</li>
+        </ul></div>
+        <div class="col-card"><h4 class="pain">⚠ Pain Points</h4><ul>
+          <li>The 3 tasks are networking-first, but 82.5% of threads get zero replies — networking promise can't be delivered</li>
+          <li>"Say hello" in regional community is high-risk when the feed is full of unanswered posts</li>
+          <li>No mention of benefits, discount codes, or training — the most tangible value is absent</li>
+          <li>Only 1.2% of messages originate via email — email isn't driving re-engagement</li>
+          <li>Email sent from connectedcommunity.org — not usgbc-ca.org — looks like spam</li>
+          <li>No personalization beyond first name — no mention of region, interests, or membership type</li>
+          <li>Single email with no follow-up sequence. If missed or deleted, there's no second chance</li>
+        </ul></div>
+        <div class="col-card"><h4 class="opp">◆ Opportunities</h4><ul>
+          <li>Reorder tasks to value-first: 1. Get your member codes/benefits (2 min), 2. Find your group (region/Women+ in Green/committee), 3. Choose ONE next step: event OR Learning Center</li>
+          <li><strong>Create an onboarding video + guide:</strong> 1-minute or less personalized welcome video so members see "our face + vibe" and feel excited to join — videos inspire action and reduce time to value</li>
+          <li>Send a personalized DM within Community Hub on Day 1 — create a welcoming space as they're joining</li>
+          <li>Include immediate value proposition in the welcome message — lead with what they gained, not what to do</li>
+          <li>Include direct link to Member Dashboard, not just Community Hub — members need a "home base"</li>
+        </ul></div>
+        <div class="col-card"><h4 class="ux">⚡ What We Need</h4><ul>
+          <li><strong>7-Day Onboarding System</strong> to guide every new member to their first WIN:</li>
+          <li>Day 1 — Immediate Connection: Welcome email + DM within Community Hub + 1-min personalized welcome video (automate this)</li>
+          <li>Day 3 — Find Your Value: Benefits/codes reminder + find your regional community</li>
+          <li>Day 5 — Take Action: Upcoming event or training opportunity</li>
+          <li>Day 7 — Celebrate First Win: Acknowledge first action or gentle nudge to complete one</li>
+          <li>Build in Mailchimp — works regardless of platform choice</li>
+        </ul></div>
+      </div>
+      <div class="data-box">📊 VERIFIED: 1,202 members agreed to terms → 906 logged in. ~25% never make it past this stage. The welcome email is the only structured touchpoint — there is no Day 3, 5, or 7 follow-up.</div>
+      <div class="ux-box">💡 <strong>UX INSIGHT:</strong> The welcome email sets an expectation of community interaction that the platform can't reliably deliver. Reframe around guaranteed-value actions (get codes, download resources, find your committee) before asking members to take social risks. Onboarding should be more than a simple "Welcome" — it needs a systematic approach that guides every new member to their first WIN.</div>
+    </div>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div class="stage" onclick="this.classList.toggle('open')">
+    <div class="stage-head">
+      <div class="stage-num">2</div>
+      <div class="stage-info"><h2>Dashboard Landing</h2><div class="plat">WordPress → usgbc-ca.org/member-dashboard</div></div>
+      <span class="emo-badge emo-confused">Overwhelmed</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-cols">
+        <div class="col-card"><h4 class="act">▸ Key Actions</h4><ul>
+          <li>Arrives at Member Dashboard on WordPress</li>
+          <li>Sees 6 equally-weighted task items with no sequence or priority</li>
+          <li>Must understand "where to go for what" across WordPress, Higher Logic, Eventbrite, and LMS</li>
+          <li>Scans for clear navigation and next steps</li>
+        </ul></div>
+        <div class="col-card"><h4 class="pain">⚠ Pain Points</h4><ul>
+          <li>"Explore the Community Hub" is vague and not aligned to real intent — doesn't describe the destination</li>
+          <li>No clear "start here" order — 6 equal-weight options cause decision paralysis (Hick's Law)</li>
+          <li>Dashboard (WordPress) links out to Higher Logic, Eventbrite, and LMS — 3 different platforms with different navigation</li>
+          <li>334 unique search terms on the Hub (62% used only once) prove members can't find what they need</li>
+          <li>No first-visit experience — no tooltips, guided tour, or "start here" prompt</li>
+          <li>Clicking any task sends the member to a different platform — no wayfinding or breadcrumbs</li>
+        </ul></div>
+        <div class="col-card"><h4 class="opp">◆ Opportunities</h4><ul>
+          <li><strong>Re-label tasks with outcome-based language:</strong> "Explore the Community Hub" → "Join your committee + connect with members"; "Member Event Codes" → "Get your member discount codes"; "Sign up for Training" → "Access member trainings + certificates"</li>
+          <li><strong>Add a helper line above tasks:</strong> "Most members start with: 1. codes → 2. find your group → 3. choose event or learning"</li>
+          <li>Onboarding tooltips or guided tour on first visit</li>
+          <li>Reduce platform jumping — consolidate or clearly signpost transitions between WordPress, Higher Logic, Eventbrite, and LMS</li>
+        </ul></div>
+        <div class="col-card"><h4 class="ux">⚡ What We Need</h4><ul>
+          <li>The Hub is functioning more like a <strong>member portal/resource directory</strong> than a conversation community — and that's okay. The IA should reflect this.</li>
+          <li>Members use search to find: communities/programs + career growth + learning — not social posting</li>
+          <li>Best practice for content-rich sites: <strong>audience pathways</strong> ("Choose your path") rather than listing everything</li>
+          <li>We already have strong entry points ("Member Login", "Already a Member? Access your Benefits") — need to make the paths from those entry points obvious within 60 seconds</li>
+        </ul></div>
+      </div>
+      <div class="data-box">📊 VERIFIED: Top search terms reveal intent: Women in Green (20), Mentor (15), Learning Center (12), HVAC (11), LEED variants. Members seek programs + career growth + learning — not social feeds. 334 unique search terms with 62% used only once = classic findability problem.</div>
+      <div class="ux-box">💡 <strong>UX INSIGHT:</strong> The dashboard creates decision paralysis. Six equally-weighted tasks with no sequence means a new member either clicks randomly or leaves. The site is content-rich with many programs — the best practice here is audience pathways ("Choose your path") rather than listing everything. Make the right path obvious in the first 60 seconds or risk drop-off.</div>
+    </div>
+  </div>
+
+  <!-- STAGE 3 -->
+  <div class="stage" onclick="this.classList.toggle('open')">
+    <div class="stage-head">
+      <div class="stage-num">3</div>
+      <div class="stage-info"><h2>Access Benefits</h2><div class="plat">Higher Logic → Member Codes / Resource Library</div></div>
+      <span class="emo-badge emo-motivated">Motivated</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-cols">
+        <div class="col-card"><h4 class="act">▸ Key Actions</h4><ul>
+          <li>Locates member benefits section or discount codes</li>
+          <li>Downloads a resource or uses a code</li>
+          <li>Confirms membership is active and providing tangible value</li>
+        </ul></div>
+        <div class="col-card"><h4 class="pain">⚠ Pain Points</h4><ul>
+          <li>Benefits scattered across WordPress dashboard, Higher Logic Hub, and main website</li>
+          <li>Resource library: 180 entries with unclear organization</li>
+          <li>No personalized benefits based on interests — same view for everyone</li>
+          <li>Member codes page lives inside the Hub but is not prominently linked from the Hub homepage</li>
+          <li>Quick Links sidebar has "Member Codes for Events" — but it competes with 8 other links</li>
+          <li>Resources are community-specific — must join a community before seeing its resources</li>
+        </ul></div>
+        <div class="col-card"><h4 class="opp">◆ Opportunities</h4><ul>
+          <li><strong>This stage should be Step 1, not Step 3.</strong> Getting discount codes within 2 minutes of login creates an immediate "membership was worth it" confirmation</li>
+          <li>Prominent benefits display on dashboard — make codes visible immediately</li>
+          <li>Personalized welcome offer highlighting top benefits by member interest area</li>
+          <li>Surface the most-downloaded resources prominently: Building Decarb (90), Green Schools (41), Green Homes (32)</li>
+          <li>Instant access to discount codes — don't make members hunt for them</li>
+        </ul></div>
+        <div class="col-card"><h4 class="ux">⚡ What We Need</h4><ul>
+          <li>This is the highest-value, lowest-risk action — but it's currently buried rather than surfaced</li>
+          <li>Members do consume resources when visible — 641 views + 370 downloads proves demand exists</li>
+          <li>Structured communities deliver value: highest download areas are Building Decarb, Green Schools, Green Homes — all structured program communities</li>
+          <li>Move this to the top of both the dashboard task list AND the welcome email — value before networking</li>
+        </ul></div>
+      </div>
+      <div class="data-box">📊 VERIFIED: 641 views + 370 downloads across 180 library entries. Top by downloads: Building Decarb (90), Green Schools (41), Green Homes (32). Members do consume resources when they can find them — the problem is findability, not demand.</div>
+      <div class="ux-box">💡 <strong>UX INSIGHT:</strong> This stage should be Step 1. Getting discount codes within 2 minutes of login creates immediate "membership was worth it" confirmation. The resource library proves members consume value when it's visible — the issue is that benefits are scattered across 3 platforms and buried behind unclear navigation.</div>
+    </div>
+  </div>
+
+  <!-- STAGE 4 -->
+  <div class="stage" onclick="this.classList.toggle('open')">
+    <div class="stage-head">
+      <div class="stage-num">4</div>
+      <div class="stage-info"><h2>Explore Pathways</h2><div class="plat">Higher Logic → Communities / Eventbrite / LMS</div></div>
+      <span class="emo-badge emo-uncertain">Uncertain</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-cols">
+        <div class="col-card"><h4 class="act">▸ Key Actions</h4><ul>
+          <li>Browses available communities (33 total: regions, committees, programs)</li>
+          <li>Tries to choose which community matches their role/interest</li>
+          <li>Follows/subscribes to updates if they find one</li>
+          <li>Picks one next step: event OR learning OR post</li>
+        </ul></div>
+        <div class="col-card"><h4 class="pain">⚠ Pain Points</h4><ul>
+          <li>AutoSubscription disabled for all 33 communities — new members get zero updates unless they manually opt in</li>
+          <li>57.9% (723) of active members are not in any community</li>
+          <li>Only 436 contacts have any subscription — the rest receive no engagement emails from the Hub</li>
+          <li>33 communities listed flat — no filtering by role, interest, or region. Classic "paradox of choice"</li>
+          <li>"My Communities Quick List" is empty for new members — cold start problem</li>
+          <li>Hub homepage defaults to "Most Recent" feed — new member sees unfamiliar names with few replies</li>
+        </ul></div>
+        <div class="col-card"><h4 class="opp">◆ Opportunities</h4><ul>
+          <li><strong>Add a "Start here" module:</strong> Find your group → Mentorship → Learning Center → Codes/Benefits</li>
+          <li><strong>Enable auto-subscription</strong> for at least regional communities upon joining — this single setting could dramatically improve return visits</li>
+          <li>Prompt "Follow/Subscribe" during first visit: "Get weekly updates from your group"</li>
+          <li><strong>Create audience pathways</strong> ("Choose your path") rather than listing all 33 communities: By Role (Emerging Pro, Established, Educator, Student), By Interest (Decarb, Equity, Green Homes), By Region</li>
+          <li>Auto-detect or ask member's region and primary interest during registration → auto-join 1-2 relevant communities</li>
+        </ul></div>
+        <div class="col-card"><h4 class="ux">⚡ What We Need</h4><ul>
+          <li>The cold-start problem is the biggest conversion killer — empty community list, feed-first landing, no guidance</li>
+          <li>The main site lists 10 regions and 12+ committees on separate pages — but doesn't link these to Hub communities. Two directories for the same thing.</li>
+          <li>Members who DO subscribe average 4.02 subscriptions — meaning those who engage, engage deeply. The gap is getting them to the first join.</li>
+          <li>The Hub is the member access layer for programs + mentorship + learning + benefits — we need to make those paths obvious in the first 60 seconds</li>
+        </ul></div>
+      </div>
+      <div class="data-box">📊 VERIFIED: 525 members in ≥1 community vs. 723 not in any. Subscribed members average 4.02 subscriptions — those who engage, engage deeply. AutoSubscription = No for all 33 communities. The gap is getting members to that first join.</div>
+      <div class="ux-box">💡 <strong>UX INSIGHT:</strong> The cold-start problem is the biggest conversion killer. The platform should auto-detect or ask the member's region and primary interest during registration, then auto-join them to 1-2 relevant communities with subscriptions enabled. This single change could shift 723 unengaged members toward the 525 engaged cohort. The Hub is the member access layer for programs + mentorship + learning + benefits — make those paths obvious, not the social feed.</div>
+    </div>
+  </div>
+
+  <!-- STAGE 5 -->
+  <div class="stage" onclick="this.classList.toggle('open')">
+    <div class="stage-head">
+      <div class="stage-num">5</div>
+      <div class="stage-info"><h2>Complete First Action</h2><div class="plat">Higher Logic / Eventbrite / LMS</div></div>
+      <span class="emo-badge emo-frustrated">High Risk</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-cols">
+        <div class="col-card"><h4 class="act">▸ Key Actions</h4><ul>
+          <li>Joins a group or committee</li>
+          <li>Registers for an event</li>
+          <li>Starts a learning module</li>
+          <li>Posts an intro or question</li>
+        </ul></div>
+        <div class="col-card"><h4 class="pain">⚠ Pain Points</h4><ul>
+          <li>Posting is risky — if no one responds, trust drops immediately</li>
+          <li>Only 17.5% of threads receive any reply (82/468)</li>
+          <li>Top 5 authors create 56.2% of threads — community feels staff-led, not peer-driven</li>
+          <li>Top 10 create 72.2% — extreme concentration of voices</li>
+          <li>Building Decarb = 40 replies; most communities have 0-5 replies per year</li>
+          <li>No distinction between "Announcement" and "Question/Help" posts — all feel like broadcast</li>
+          <li>No response-time commitment or expectation-setting for questions</li>
+        </ul></div>
+        <div class="col-card"><h4 class="opp">◆ Opportunities</h4><ul>
+          <li><strong>Introduce lightweight response governance:</strong> Label posts as "Question/Help" vs "Announcement" — ensure "Question/Help" gets a response within 3 business days</li>
+          <li>Shift recommended first action to lower-risk, guaranteed-success paths: RSVP to event, download a resource, or follow a community — not posting</li>
+          <li>Celebrate first actions — badge, welcome message, or acknowledgment to create a dopamine loop</li>
+          <li><strong>Virtual New Member Meetup (monthly):</strong> Help new members get in the groove, meet each other, and get comfortable on the platform — onboarding with real humans</li>
+          <li><strong>Expert Invite Event (bi-weekly):</strong> Every couple weeks, bring in an expert to share knowledge and connect — gives members a reason to return and participate</li>
+        </ul></div>
+        <div class="col-card"><h4 class="ux">⚡ What We Need</h4><ul>
+          <li>Fix the trust loop: Members see staff-posted content → don't feel compelled to reply to announcements → post their own question → get no reply → don't return</li>
+          <li>The "Create" button in Hub nav lets anyone post — but posting to an empty-feeling community is a trust risk. Route first actions to guaranteed-success paths instead</li>
+          <li>Staff accounts (@usgbc-ca.org + @usgbc-la.org) authored ~65.6% of threads with only 8.3% reply rate vs 21.1% for non-staff — staff content reads as broadcast, not conversation</li>
+          <li>If action is rewarded: member is motivated. If ignored: disappointed and unlikely to return. Design for the reward.</li>
+        </ul></div>
+      </div>
+      <div class="data-box">📊 VERIFIED: 84 unique contributors out of 1,202 registered = 7.0% contribution rate. Staff thread reply rate: 8.3% vs non-staff: 21.1%. Building Decarb is most active (101 posts, 40 replies). Most communities have fewer than 5 replies over the entire year.</div>
+      <div class="ux-box">💡 <strong>UX INSIGHT:</strong> The data reveals a trust loop failure. Fix the loop by (1) ensuring questions always get answered within 3 business days, (2) routing first actions to guaranteed-success paths like event RSVPs or resource downloads, and (3) creating recurring engagement anchors — Virtual New Member Meetups and Expert Invite Events give members a reason to come back that doesn't depend on organic discussion.</div>
+    </div>
+  </div>
+
+  <!-- STAGE 6 -->
+  <div class="stage" onclick="this.classList.toggle('open')">
+    <div class="stage-head">
+      <div class="stage-num">6</div>
+      <div class="stage-info"><h2>Seven-Day Follow-Through</h2><div class="plat">Mailchimp + Higher Logic Notifications</div></div>
+      <span class="emo-badge emo-atrisk">At Risk of Churn</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-cols">
+        <div class="col-card"><h4 class="act">▸ Key Actions</h4><ul>
+          <li>Completes chosen action (attends event, starts training, explores discussions)</li>
+          <li>Receives follow-up communications (if any)</li>
+          <li>Decides whether the platform is worth returning to</li>
+          <li>If membership lapses: hits expired membership paywall popup</li>
+        </ul></div>
+        <div class="col-card"><h4 class="pain">⚠ Pain Points</h4><ul>
+          <li>No structured follow-up — the welcome email is the only onboarding touchpoint</li>
+          <li>98.8% of discussion messages originate from website — email is not driving re-engagement</li>
+          <li>Without auto-subscriptions, most members receive no Hub-related emails after the welcome</li>
+          <li>25% of registered members never logged in — no re-engagement mechanism exists</li>
+          <li>Expired members hit a paywall popup that just says "Expired or Inactive" — no value proposition, no support route, no clear statement of what is/isn't accessible</li>
+          <li>No re-engagement trigger when a member hasn't logged in for 30, 60, or 90 days</li>
+          <li>Dashboard doesn't change between visits — no "since you were last here" or activity digest</li>
+        </ul></div>
+        <div class="col-card"><h4 class="opp">◆ Opportunities</h4><ul>
+          <li><strong>7-day automated sequence in Mailchimp:</strong> Day 1 welcome + codes → Day 3 find group → Day 5 event/training → Day 7 celebrate first win (platform-independent)</li>
+          <li>Send personalized DM within Community Hub on Day 1</li>
+          <li><strong>Virtual New Member Meetup (monthly):</strong> Onboarding with real humans — help members get comfortable on the platform</li>
+          <li>Track first-to-second-login gap as a retention KPI</li>
+          <li>Celebrate milestones: first event, first download, profile completion — create a dopamine loop</li>
+          <li><strong>Redesign expired membership popup:</strong> Add "You'll regain access to..." list aligned to actual value (codes, trainings, committees, member events); add a "Need help?" support route; clearly state what is/isn't accessible while expired</li>
+        </ul></div>
+        <div class="col-card"><h4 class="ux">⚡ What We Need</h4><ul>
+          <li>The absence of a re-engagement system is the largest structural gap — we hope members will "figure it out" with our vast resources, but data shows they don't</li>
+          <li>We need a systematic approach that guides every new member to their first WIN — not a single email and hope</li>
+          <li>Both the 7-day Mailchimp drip AND auto-subscriptions are platform-independent fixes we can implement now</li>
+          <li>Avg logins/day ≈ 14.7 — activity spikes with events/email sends then drops. No sustained organic return behavior without a trigger</li>
+          <li>The expired popup is a missed retention opportunity — should convert, not frustrate</li>
+        </ul></div>
+      </div>
+      <div class="data-box">📊 VERIFIED: Avg logins/day ≈ 14.7 across 906 unique users over 12 months. Weekends drop to 1-4 logins/day. Activity spikes correlate with events/email sends, then drops immediately. No sustained organic return behavior.</div>
+      <div class="ux-box">💡 <strong>UX INSIGHT:</strong> The gap between registration (1,202) and login (906) represents ~25% who never came back. The gap between login (906) and community join (525) represents another 42% who looked but didn't stay. Onboarding should be more than a simple "Welcome" — it needs a systematic approach: 7-day drip + auto-subscriptions + onboarding video + virtual meetups. All of these work regardless of which platform you choose in June.</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ============ RECOMMENDATIONS ============ -->
+<section id="recs">
+<div class="mx">
+  <div class="sec-tag">Action Plan</div>
+  <div class="sec-title">Priority Recommendations</div>
+  <p class="sec-desc">Actions ranked by impact, effort, and platform dependency. "Before June" items work on any platform. "Inform Platform Choice" items should be used as evaluation criteria during demos.</p>
+
+  <div class="rec-grid">
+    <div class="rec" style="border-left-color:var(--r600)">
+      <div class="rec-tag" style="color:var(--r600)">⬤ Now — Before June Decision</div>
+      <h3>Re-label dashboard tasks with outcome language</h3>
+      <p>"Explore the Community Hub" → "Join your committee + connect with members." "Member Event Codes" → "Get your member discount codes." "Sign up for Training" → "Access member trainings + certificates." Add numbered sequence. WordPress content change — no platform dependency.</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--r600)">
+      <div class="rec-tag" style="color:var(--r600)">⬤ Now — Before June Decision</div>
+      <h3>Enable auto-subscription for regional communities</h3>
+      <p>Currently disabled for all 33 communities. At minimum, auto-subscribe new members to their regional community so they receive email digests. This single Higher Logic setting change could dramatically improve return visits. If switching platforms, require this feature.</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--r600)">
+      <div class="rec-tag" style="color:var(--r600)">⬤ Now — Before June Decision</div>
+      <h3>Build a 7-day onboarding email sequence</h3>
+      <p>Replace single welcome email with Mailchimp automation: Day 1 (welcome + get your codes), Day 3 (find your group based on region), Day 5 (upcoming event or training), Day 7 (celebrate first win or gentle nudge). Works regardless of which platform you choose.</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--r600)">
+      <div class="rec-tag" style="color:var(--r600)">⬤ Now — Before June Decision</div>
+      <h3>Reorder welcome email tasks: value before networking</h3>
+      <p>Current: 1. LinkedIn, 2. Directory, 3. Say hello. New: 1. Get your discount codes, 2. Find your regional or interest community, 3. Browse upcoming events. Leads with guaranteed-value actions instead of high-risk social asks. Change the sender domain if possible.</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--a600)">
+      <div class="rec-tag" style="color:var(--a600)">⬤ Next — Inform Platform Choice</div>
+      <h3>Evaluate platforms on onboarding flows + auto-subscription</h3>
+      <p>During demos with Circle, Mighty Networks, and Heartbeat, ask: Does the platform support guided onboarding for new members? Can it auto-subscribe to spaces/groups? Does it support audience pathways ("Choose your path")? Does it visually match your brand? Can it consolidate the 5-platform stack?</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--a600)">
+      <div class="rec-tag" style="color:var(--a600)">⬤ Next — Inform Platform Choice</div>
+      <h3>Introduce response governance for discussions</h3>
+      <p>Label posts "Question/Help" vs "Announcement" and commit to staff response within 3 business days for questions. Evaluate whether each demo platform supports post types, tagging, and response tracking natively.</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--a600)">
+      <div class="rec-tag" style="color:var(--a600)">⬤ Next — Inform Platform Choice</div>
+      <h3>Create audience pathways instead of flat community lists</h3>
+      <p>Replace 33-community flat list with "Choose your path" flow: By Role (Emerging Pro, Established, Educator, Student), By Interest (Decarb, Equity, Green Homes), By Region. Evaluate which platform makes contextual onboarding easiest.</p>
+    </div>
+    <div class="rec" style="border-left-color:var(--b600)">
+      <div class="rec-tag" style="color:var(--b600)">⬤ Later — Post-Decision</div>
+      <h3>Redesign the cross-platform experience</h3>
+      <p>Reduce the 5-platform stack. Consolidate event management into the community platform (or at minimum, embed). Align visual identity across all touchpoints. Create a persistent nav or breadcrumb system so members always know where they are and how to get back.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="foot">
+  USGBC-CA · Membership / Member Hub User Journey · Current State · UX Audit + Verified Data (Feb 2025 – Feb 2026) · Prepared April 2026
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Smooth scroll for nav
+document.querySelectorAll('.sticky-nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+// Highlight active nav on scroll
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.sticky-nav a'

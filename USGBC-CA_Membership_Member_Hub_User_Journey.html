@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USGBC-CA | Membership / Member Hub User Journey — Current State</title>
+<title>USGBC-CA | Member Hub Research</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -142,6 +142,110 @@ section:first-of-type{padding-top:40px}
 /* ---- FOOTER ---- */
 .foot{background:var(--g900);padding:28px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px}
 
+/* ---- TOP TAB BAR ---- */
+.tab-bar{position:sticky;top:0;z-index:200;background:var(--g900);border-bottom:3px solid var(--g700);display:flex;align-items:stretch;gap:0}
+.tab-bar-logo{font-family:var(--serif);font-size:15px;color:var(--w);padding:0 24px;display:flex;align-items:center;border-right:1px solid var(--g700);flex-shrink:0;letter-spacing:0.3px}
+.tab-btn{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);background:none;border:none;padding:16px 28px;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;margin-bottom:-3px;display:flex;align-items:center;gap:8px;white-space:nowrap;flex-shrink:0}
+.tab-btn:hover{color:var(--g300);background:rgba(255,255,255,0.04)}
+.tab-btn.active{color:var(--w);border-bottom-color:var(--g300);background:rgba(255,255,255,0.06)}
+.tab-btn .tab-icon{font-size:14px}
+.tab-btn .tab-badge{background:var(--r600);color:white;font-size:9px;padding:2px 6px;border-radius:10px;font-family:var(--mono);letter-spacing:0.5px;margin-left:4px}
+
+/* ---- TAB CONTENT ---- */
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ---- SURVEY PAGE STYLES ---- */
+.survey-hero{background:var(--g900);padding:64px 24px 48px;position:relative;overflow:hidden}
+.survey-hero::before{content:'';position:absolute;top:-40%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(27,154,115,.1) 0%,transparent 70%)}
+.survey-hero-inner{max-width:1280px;margin:0 auto;position:relative}
+.survey-hero-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--g300);margin-bottom:20px}
+.survey-hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);color:var(--w);line-height:1.1;margin-bottom:16px;font-weight:400}
+.survey-hero h1 em{font-style:italic;color:var(--g300)}
+.survey-hero p{font-size:15px;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.65;margin-bottom:28px}
+.survey-stat-strip{display:flex;gap:32px;flex-wrap:wrap;margin-top:4px}
+.survey-stat-strip-item{text-align:center}
+.survey-stat-strip-item .num{font-family:var(--serif);font-size:32px;color:var(--w);line-height:1}
+.survey-stat-strip-item .lbl{font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px;margin-top:4px}
+
+.survey-body{max-width:1280px;margin:0 auto;padding:0 24px}
+
+/* key finding alert */
+.key-finding{background:var(--g900);border-radius:14px;padding:32px;margin:40px 0;color:var(--w)}
+.key-finding h2{font-family:var(--serif);font-size:24px;color:var(--w);margin-bottom:20px;font-weight:400}
+.key-finding ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.key-finding ul li{display:flex;gap:12px;font-size:14px;line-height:1.55;color:rgba(255,255,255,0.88)}
+.key-finding ul li::before{content:'→';color:var(--g300);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* survey section header */
+.s-sec{margin:48px 0 20px}
+.s-sec-top{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.s-sec h2{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--s900)}
+.s-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.s-tag-m{background:var(--g100);color:var(--g700)}
+.s-tag-s{background:var(--a100);color:var(--a600)}
+.s-tag-c{background:var(--p100);color:var(--p600)}
+
+/* survey cards */
+.s-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:24px;margin-bottom:12px}
+.s-card h3{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:16px;color:var(--s900)}
+.s-two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+
+/* bar chart */
+.s-bars{display:flex;flex-direction:column;gap:8px}
+.s-bar-row{display:grid;grid-template-columns:200px 1fr 44px;align-items:center;gap:10px}
+.s-bar-lbl{font-size:13px;color:var(--s700);font-weight:500;text-align:right}
+.s-bar-track{height:26px;background:var(--s100);border-radius:6px;overflow:hidden}
+.s-bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-family:var(--mono);font-size:10px;font-weight:600;color:white;white-space:nowrap}
+.s-bar-pct{font-family:var(--mono);font-size:11px;color:var(--s500)}
+.fill-g{background:var(--g700)}
+.fill-a{background:var(--a600)}
+.fill-r{background:var(--r600)}
+.fill-b{background:var(--b600)}
+
+/* big number */
+.big-num{font-family:var(--serif);font-size:52px;line-height:1}
+.big-sub{font-size:12px;color:var(--s500);margin-top:4px;line-height:1.4}
+
+/* rating bar */
+.r-bars{display:flex;flex-direction:column;gap:6px}
+.r-bar-row{display:grid;grid-template-columns:1fr 160px 60px;align-items:center;gap:10px}
+.r-bar-lbl{font-size:12px;color:var(--s700);font-weight:500}
+.r-bar-track{height:8px;background:var(--s100);border-radius:100px;overflow:hidden}
+.r-bar-fill{height:100%;border-radius:100px}
+.r-score{font-family:var(--serif);font-size:15px;font-weight:600;text-align:right}
+
+/* insight box */
+.s-insight{border-radius:10px;padding:14px 18px;border-left:4px solid;margin-top:12px}
+.ins-r{background:var(--r100);border-color:var(--r600)}
+.ins-a{background:var(--a100);border-color:var(--a600)}
+.ins-g{background:var(--g100);border-color:var(--g500)}
+.ins-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;font-weight:700}
+.ins-r .ins-label{color:var(--r600)}.ins-a .ins-label{color:var(--a600)}.ins-g .ins-label{color:var(--g700)}
+.s-insight p{font-size:13px;color:var(--s700);line-height:1.55}
+
+/* quote grid */
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.q-card{background:var(--w);border:1px solid var(--s200);border-radius:10px;padding:20px;position:relative}
+.q-card::before{content:'"';font-family:var(--serif);font-size:56px;color:var(--g100);position:absolute;top:-8px;left:16px;line-height:1;pointer-events:none}
+.q-card p{font-size:13px;color:var(--s700);line-height:1.6;font-style:italic;padding-top:12px}
+.q-meta{margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--s400);letter-spacing:0.5px}
+
+/* conclusion */
+.s-conclusion{background:linear-gradient(135deg,var(--g900) 0%,var(--g700) 100%);border-radius:14px;padding:40px;margin:40px 0;color:white}
+.s-conclusion .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g300);margin-bottom:12px}
+.s-conclusion h2{font-family:var(--serif);font-size:30px;color:var(--w);margin-bottom:16px;font-weight:400}
+.s-conclusion p{font-size:14px;color:rgba(255,255,255,0.82);line-height:1.7}
+.s-conclusion strong{color:var(--g300)}
+
+@media(max-width:768px){
+  .s-two,.q-grid{grid-template-columns:1fr}
+  .s-bar-row{grid-template-columns:120px 1fr 36px}
+  .s-bar-lbl{font-size:11px}
+  .tab-bar-logo{display:none}
+  .tab-btn{padding:14px 16px;font-size:10px}
+}
+
 /* ---- RESPONSIVE ---- */
 @media(max-width:960px){
   .persona{grid-template-columns:1fr 1fr}
@@ -163,8 +267,22 @@ section:first-of-type{padding-top:40px}
 </head>
 <body>
 
-<nav class="sticky-nav">
-  <span class="nav-logo">USGBC-CA</span>
+<nav class="tab-bar">
+  <div class="tab-bar-logo">USGBC-CA</div>
+  <button class="tab-btn active" onclick="switchTab('journey')" id="tab-journey">
+    <span class="tab-icon">🗺</span> Member Journey
+  </button>
+  <button class="tab-btn" onclick="switchTab('survey')" id="tab-survey">
+    <span class="tab-icon">📊</span> Community Hub Survey Findings
+    <span class="tab-badge">NEW</span>
+  </button>
+</nav>
+
+<!-- ===== JOURNEY TAB ===== -->
+<div class="tab-panel active" id="panel-journey">
+
+<!-- internal nav for journey page -->
+<nav class="sticky-nav" style="top:51px">
   <a href="#funnel">Funnel</a>
   <a href="#ux-audit">UX Audit</a>
   <a href="#systems">Systems Map</a>
@@ -706,8 +824,203 @@ section:first-of-type{padding-top:40px}
   USGBC-CA · Membership / Member Hub User Journey · Current State · UX Audit + Verified Data (Feb 2025 – Feb 2026) · Prepared April 2026
 </div>
 
+</div><!-- /panel-journey -->
+
+<!-- ===== SURVEY TAB ===== -->
+<div class="tab-panel" id="panel-survey">
+
+  <div class="survey-hero">
+    <div class="survey-hero-inner">
+      <div class="survey-hero-tag">Member + Staff Survey · April 2026</div>
+      <h1>Community Hub <em>Survey Findings</em></h1>
+      <p>Direct feedback from members and staff on the current Higher Logic platform — synthesized to support the platform transition proposal.</p>
+      <div class="survey-stat-strip">
+        <div class="survey-stat-strip-item"><div class="num">8</div><div class="lbl">Member responses</div></div>
+        <div class="survey-stat-strip-item"><div class="num">4</div><div class="lbl">Staff responses</div></div>
+        <div class="survey-stat-strip-item"><div class="num">2.1/5</div><div class="lbl">Avg member satisfaction</div></div>
+        <div class="survey-stat-strip-item"><div class="num">2.0/5</div><div class="lbl">Avg staff satisfaction</div></div>
+        <div class="survey-stat-strip-item"><div class="num">75%</div><div class="lbl">Members made zero connections</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#F5F3F0;padding-bottom:64px">
+  <div class="survey-body">
+
+    <div class="key-finding">
+      <h2>Key Findings at a Glance</h2>
+      <ul>
+        <li>Both staff and members rate the platform at or below 2/5 — consistent dissatisfaction across the board</li>
+        <li>75% of members have made zero new connections through the Hub — the core networking promise is failing</li>
+        <li>The top two member barriers are tied: "platform is hard to use" and "not enough activity" — both are platform problems, not motivation problems</li>
+        <li>Staff unanimously cite lack of engagement, clunky navigation, and duplication of other platforms as the top 3 problems</li>
+        <li>Two respondents independently mentioned Circle as a better alternative — completely unprompted</li>
+        <li>Members want one place for CEUs, events, committees, networking, and news — without multiple logins</li>
+      </ul>
+    </div>
+
+    <!-- MEMBER FINDINGS -->
+    <div class="s-sec">
+      <div class="s-sec-top"><h2>Member Feedback</h2><span class="s-tag s-tag-m">8 Responses</span></div>
+    </div>
+
+    <div class="s-two">
+      <div class="s-card">
+        <h3>How Often Do Members Log In?</h3>
+        <div class="s-bars">
+          <div class="s-bar-row"><div class="s-bar-lbl">Weekly</div><div class="s-bar-track"><div class="s-bar-fill fill-g" style="width:25%">2</div></div><div class="s-bar-pct">25%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">Monthly</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:50%">4</div></div><div class="s-bar-pct">50%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">Rarely (few times/yr)</div><div class="s-bar-track"><div class="s-bar-fill fill-r" style="width:25%">2</div></div><div class="s-bar-pct">25%</div></div>
+        </div>
+        <div class="s-insight ins-a" style="margin-top:14px"><div class="ins-label">Takeaway</div><p>75% log in monthly or less — confirming our behavioral data showing weak return visits.</p></div>
+      </div>
+      <div class="s-card">
+        <h3>Time Spent Per Session</h3>
+        <div class="s-bars">
+          <div class="s-bar-row"><div class="s-bar-lbl">15–30 minutes</div><div class="s-bar-track"><div class="s-bar-fill fill-g" style="width:12.5%">1</div></div><div class="s-bar-pct">12.5%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">5–15 minutes</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:37.5%">3</div></div><div class="s-bar-pct">37.5%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">Under 5 minutes</div><div class="s-bar-track"><div class="s-bar-fill fill-r" style="width:50%">4</div></div><div class="s-bar-pct">50%</div></div>
+        </div>
+        <div class="s-insight ins-r" style="margin-top:14px"><div class="ins-label">Takeaway</div><p>Half of members spend under 5 minutes — not finding value fast enough to stay.</p></div>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <h3>Primary Uses (Select All That Apply)</h3>
+      <div class="s-bars">
+        <div class="s-bar-row"><div class="s-bar-lbl">Events</div><div class="s-bar-track"><div class="s-bar-fill fill-g" style="width:75%">6 members</div></div><div class="s-bar-pct">75%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Committees / RLABs</div><div class="s-bar-track"><div class="s-bar-fill fill-g" style="width:50%">4 members</div></div><div class="s-bar-pct">50%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Reading discussions</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:37.5%">3 members</div></div><div class="s-bar-pct">37.5%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Accessing resources</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:25%">2 members</div></div><div class="s-bar-pct">25%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">USGBC-CA news</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:25%">2 members</div></div><div class="s-bar-pct">25%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Connecting with members</div><div class="s-bar-track"><div class="s-bar-fill fill-r" style="width:12.5%">1 member</div></div><div class="s-bar-pct">12.5%</div></div>
+      </div>
+      <div class="s-insight ins-a" style="margin-top:14px"><div class="ins-label">Takeaway</div><p>Events and Committees are the primary draw — but both are split across multiple platforms, creating the fragmentation problem.</p></div>
+    </div>
+
+    <div class="s-two">
+      <div class="s-card">
+        <h3>Top Barriers to Engagement</h3>
+        <div class="s-bars">
+          <div class="s-bar-row"><div class="s-bar-lbl">Platform is hard to use</div><div class="s-bar-track"><div class="s-bar-fill fill-r" style="width:62.5%">5</div></div><div class="s-bar-pct">62.5%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">Not enough activity</div><div class="s-bar-track"><div class="s-bar-fill fill-r" style="width:62.5%">5</div></div><div class="s-bar-pct">62.5%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">Content isn't relevant</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:25%">2</div></div><div class="s-bar-pct">25%</div></div>
+          <div class="s-bar-row"><div class="s-bar-lbl">Other (screen fatigue, etc.)</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:25%">2</div></div><div class="s-bar-pct">25%</div></div>
+        </div>
+      </div>
+      <div class="s-card">
+        <h3>Member Ratings</h3>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div><div style="font-size:12px;color:var(--s500);margin-bottom:4px">Findability</div><div style="display:flex;align-items:center;gap:10px"><div class="big-num" style="color:var(--r600)">2.5<span style="font-size:18px;color:var(--s400)">/5</span></div><div class="big-sub">Struggle to find<br>what they need</div></div></div>
+          <div><div style="font-size:12px;color:var(--s500);margin-bottom:4px">Committee/RLAB ease</div><div style="display:flex;align-items:center;gap:10px"><div class="big-num" style="color:var(--a600)">2.3<span style="font-size:18px;color:var(--s400)">/5</span></div><div class="big-sub">Below average despite<br>being primary use case</div></div></div>
+          <div><div style="font-size:12px;color:var(--s500);margin-bottom:4px">Overall satisfaction</div><div style="display:flex;align-items:center;gap:10px"><div class="big-num" style="color:var(--r600)">2.1<span style="font-size:18px;color:var(--s400)">/5</span></div><div class="big-sub">Consistently below<br>average across all types</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <h3>Have Members Connected with New People Through the Hub?</h3>
+      <div class="s-bars">
+        <div class="s-bar-row"><div class="s-bar-lbl">No, not at all</div><div class="s-bar-track"><div class="s-bar-fill fill-r" style="width:50%">4 members</div></div><div class="s-bar-pct">50%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Yes, 1–2 people</div><div class="s-bar-track"><div class="s-bar-fill fill-a" style="width:25%">2 members</div></div><div class="s-bar-pct">25%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Yes, a few (3–5)</div><div class="s-bar-track"><div class="s-bar-fill fill-g" style="width:12.5%">1 member</div></div><div class="s-bar-pct">12.5%</div></div>
+        <div class="s-bar-row"><div class="s-bar-lbl">Yes, several (6+)</div><div class="s-bar-track"><div class="s-bar-fill fill-g" style="width:12.5%">1 member</div></div><div class="s-bar-pct">12.5%</div></div>
+      </div>
+      <div class="s-insight ins-r" style="margin-top:14px"><div class="ins-label">Critical Finding</div><p>75% of members have made little to no new connections. For a statewide chapter whose core value is connecting professionals across California, this is a fundamental failure of the platform.</p></div>
+    </div>
+
+    <!-- Member quotes -->
+    <div class="s-sec"><div class="s-sec-top"><h2>What Members Said</h2><span class="s-tag s-tag-m">Direct Quotes</span></div></div>
+    <div class="q-grid">
+      <div class="q-card"><p>The resources are hidden between different pages — things need to be more centralized despite the different groups we're part of.</p><div class="q-meta">Individual · San Diego</div></div>
+      <div class="q-card"><p>I'd love to see a calendar with ALL committee meetings — not only the ones I'm in — with clickable links to zoom rooms. Have you used Circle? More like that calendar feature.</p><div class="q-meta">Individual · Los Angeles</div></div>
+      <div class="q-card"><p>I would change the platform altogether.</p><div class="q-meta">Individual · San Diego</div></div>
+      <div class="q-card"><p>Easy to use with notifications on my phone — don't have to remember login info. That's what I want from this platform.</p><div class="q-meta">Emerging Professional · Bay Area</div></div>
+      <div class="q-card"><p>It takes a concerted effort to keep a community's discussion board going. I don't see a designated moderator keeping it active.</p><div class="q-meta">Individual · Los Angeles</div></div>
+      <div class="q-card"><p>The platform is clunky. I also simply forget to log in unless I need something specific.</p><div class="q-meta">Individual · Los Angeles</div></div>
+    </div>
+
+    <!-- STAFF FINDINGS -->
+    <div class="s-sec" style="border-top:1px solid var(--s200);padding-top:48px">
+      <div class="s-sec-top"><h2>Staff Feedback</h2><span class="s-tag s-tag-s">4 Responses</span></div>
+    </div>
+
+    <div class="s-card">
+      <h3>Staff Ratings — Current Platform Performance</h3>
+      <div class="r-bars">
+        <div class="r-bar-row"><div class="r-bar-lbl">Member findability</div><div class="r-bar-track"><div class="r-bar-fill" style="width:70%;background:var(--a600)"></div></div><div class="r-score" style="color:var(--a600)">3.5/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">Search effectiveness</div><div class="r-bar-track"><div class="r-bar-fill" style="width:36%;background:var(--r600)"></div></div><div class="r-score" style="color:var(--r600)">1.8/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">Navigation clarity</div><div class="r-bar-track"><div class="r-bar-fill" style="width:60%;background:var(--a600)"></div></div><div class="r-score" style="color:var(--a600)">3.0/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">New member onboarding</div><div class="r-bar-track"><div class="r-bar-fill" style="width:52%;background:var(--a600)"></div></div><div class="r-score" style="color:var(--a600)">2.6/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">Discussion engagement</div><div class="r-bar-track"><div class="r-bar-fill" style="width:34%;background:var(--r600)"></div></div><div class="r-score" style="color:var(--r600)">1.7/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">Notification effectiveness</div><div class="r-bar-track"><div class="r-bar-fill" style="width:50%;background:var(--a600)"></div></div><div class="r-score" style="color:var(--a600)">2.5/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">Committee/RLAB engagement</div><div class="r-bar-track"><div class="r-bar-fill" style="width:54%;background:var(--a600)"></div></div><div class="r-score" style="color:var(--a600)">2.7/5</div></div>
+        <div class="r-bar-row"><div class="r-bar-lbl">Member directory</div><div class="r-bar-track"><div class="r-bar-fill" style="width:48%;background:var(--r600)"></div></div><div class="r-score" style="color:var(--r600)">2.4/5</div></div>
+      </div>
+      <div class="s-insight ins-r" style="margin-top:16px"><div class="ins-label">Lowest Scores</div><p>Discussion engagement (1.7/5) and search effectiveness (1.8/5) — both core to a functional community platform — directly correlate with our behavioral data showing 82.5% unanswered threads.</p></div>
+    </div>
+
+    <div class="s-card">
+      <h3>Staff-Identified Top Problems</h3>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="s-insight ins-r"><div class="ins-label">🔴 Cited by all 4 staff</div><p><strong>Lack of engagement</strong> — discussions fall into a black hole, low participation, members don't return</p></div>
+        <div class="s-insight ins-r"><div class="ins-label">🔴 Cited by 3 staff</div><p><strong>Platform duplication</strong> — overlaps with LinkedIn, Eventbrite, LMS, Career Site; members question why they need another login</p></div>
+        <div class="s-insight ins-a"><div class="ins-label">🟡 Cited by 3 staff</div><p><strong>Clunky navigation</strong> — login issues, confusing structure, meeting sign-ups broken, hard-to-use backend</p></div>
+        <div class="s-insight ins-a"><div class="ins-label">🟡 Cited by 2 staff</div><p><strong>No clear platform purpose</strong> — "What are members getting here that they can't get elsewhere?"</p></div>
+      </div>
+    </div>
+
+    <!-- Staff quotes -->
+    <div class="s-sec"><div class="s-sec-top"><h2>What Staff Said</h2><span class="s-tag s-tag-s">Direct Quotes</span></div></div>
+    <div class="q-grid">
+      <div class="q-card"><p>It is not clear to me that a tool like this can work for our membership, because people are busy and don't want a separate platform to log into.</p><div class="q-meta">Michael · Advocacy</div></div>
+      <div class="q-card"><p>I used to post more but it seems like it was falling into a black hole. No one needs yet another platform to log into. I recommend consolidating the platforms we have.</p><div class="q-meta">Sarah Wolf · Workforce Development</div></div>
+      <div class="q-card"><p>Honestly? I don't think it does much well. Overall impression: mediocre. I am overall impressed with the Living Future community platform.</p><div class="q-meta">Kyle · eXperience</div></div>
+      <div class="q-card"><p>Members should be able to access their CEUs, certificates, badges, contact details, mentorship, and event registrations all in one place.</p><div class="q-meta">Sarah Wolf · Workforce Development</div></div>
+    </div>
+
+    <!-- COMBINED -->
+    <div class="s-sec" style="border-top:1px solid var(--s200);padding-top:48px">
+      <div class="s-sec-top"><h2>Combined Insights</h2><span class="s-tag s-tag-c">Staff + Members</span></div>
+    </div>
+
+    <div class="s-two">
+      <div class="s-insight ins-r" style="margin-top:0"><div class="ins-label">Where Staff & Members Agree</div><p>Both groups independently cite the same three problems: <strong>platform is hard to use, discussions are dead, and there's no clear reason to come back.</strong></p></div>
+      <div class="s-insight ins-g" style="margin-top:0"><div class="ins-label">What the Ideal Platform Looks Like</div><p>Both want: <strong>one login, events + committees + resources in one place, mobile push notifications, and active discussions with real responses.</strong></p></div>
+    </div>
+
+    <div class="s-insight ins-a">
+      <div class="ins-label">⭐ Unprompted Circle Mentions — Independent Validation</div>
+      <p>Two respondents independently referenced Circle without any prompting. One member said <em>"Have you used Circle? More like that calendar feature."</em> Staff member Kyle (eXperience) noted being "impressed with the Living Future community platform" — which runs on Circle. Unsolicited validation from both sides strengthens the case for Circle as our recommended platform.</p>
+    </div>
+
+    <div class="s-conclusion">
+      <div class="eyebrow">Survey Conclusion · April 2026</div>
+      <h2>The Data Supports a Platform Change</h2>
+      <p>Both member and staff feedback confirms what our behavioral data has shown all year: Higher Logic is not delivering value for USGBC-CA members. With average satisfaction scores of 2.0–2.1/5, 75% of members failing to make meaningful connections, and staff unanimously citing engagement failure as the top problem, the case for transitioning is clear.</p>
+      <p style="margin-top:14px">Members want one place to manage their USGBC-CA membership — events, committees, resources, discussions, and connections — without multiple logins. The survey findings, combined with our journey map research and demo evaluations, point to <strong style="color:var(--g300)">Circle</strong> as the platform best positioned to solve these problems before the June renewal deadline.</p>
+    </div>
+
+  </div><!-- /survey-body -->
+  </div><!-- /bg -->
+
+  <div class="foot">
+    USGBC-CA · Community Hub Survey Findings · April 2026 · 8 Member + 4 Staff Responses
+  </div>
+
+</div><!-- /panel-survey -->
+
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Smooth scroll for nav
+// ---- TAB SWITCHING ----
+function switchTab(tab) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ---- SMOOTH SCROLL for journey nav ----
 document.querySelectorAll('.sticky-nav a').forEach(a=>{
   a.addEventListener('click',e=>{
     e.preventDefault();
@@ -715,6 +1028,7 @@ document.querySelectorAll('.sticky-nav a').forEach(a=>{
     if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-// Highlight active nav on scroll
+
+// ---- ACTIVE NAV HIGHLIGHT on scroll ----
 const sections=document.querySelectorAll('section[id]');
-const navLinks=document.querySelectorAll('.sticky-nav a'
+const navLinks=document.querySelectorAll('.sticky-nav a');

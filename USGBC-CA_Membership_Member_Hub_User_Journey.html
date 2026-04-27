@@ -274,23 +274,979 @@ section:first-of-type{padding-top:40px}
   .stage-head{grid-template-columns:42px 1fr;gap:10px}
   .emo-badge{grid-column:2;justify-self:start}
 }
+
+/* ===== TECH PROPOSAL STYLES ===== */
+.tp-hero{background:linear-gradient(135deg,var(--g900) 0%,#0D4F38 100%);padding:72px 24px 56px;position:relative;overflow:hidden}
+.tp-hero::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(95,202,165,.08) 0%,transparent 70%);pointer-events:none}
+.tp-hero-inner{max-width:1280px;margin:0 auto;position:relative}
+.tp-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--g300);margin-bottom:16px}
+.tp-hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,54px);color:var(--w);line-height:1.1;margin-bottom:16px;font-weight:400}
+.tp-hero h1 em{font-style:italic;color:var(--g300)}
+.tp-hero p{font-size:15px;color:rgba(255,255,255,0.75);max-width:640px;line-height:1.65;margin-bottom:28px}
+.tp-rec-badge{display:inline-flex;align-items:center;gap:12px;background:var(--g300);color:var(--g900);padding:12px 24px;border-radius:100px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:1px}
+
+.tp-body{max-width:1280px;margin:0 auto;padding:0 24px 64px}
+.tp-section{margin-top:56px}
+.tp-section-title{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--s900);margin-bottom:4px}
+.tp-section-tag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--s400);margin-bottom:20px;display:block}
+
+/* intro 2-col */
+.tp-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px}
+.tp-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:24px}
+.tp-card h3{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:12px;color:var(--s900)}
+.tp-card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tp-card ul li{font-size:13px;color:var(--s700);line-height:1.5;display:flex;gap:8px}
+.tp-card ul li::before{content:'→';color:var(--g500);font-weight:700;flex-shrink:0}
+
+/* comparison table */
+.tp-table{width:100%;border-collapse:collapse;background:var(--w);border-radius:12px;overflow:hidden;border:1px solid var(--s200)}
+.tp-table th{background:var(--g900);color:var(--w);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;padding:16px 20px;text-align:left}
+.tp-table td{padding:16px 20px;font-size:13px;color:var(--s700);line-height:1.55;border-bottom:1px solid var(--s200);vertical-align:top}
+.tp-table tr:last-child td{border-bottom:none}
+.tp-table td:first-child{font-weight:700;color:var(--s900);font-size:13px;white-space:nowrap}
+.tp-table tr.highlight-row td{background:var(--g50)}
+.tp-table .pro{color:var(--g700)}.tp-table .con{color:var(--r600)}
+
+/* pricing table */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:4px}
+.price-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:20px;position:relative}
+.price-card.featured{border:2px solid var(--g500);background:var(--g50)}
+.price-card .featured-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--g500);color:white;font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:10px;white-space:nowrap}
+.price-card h3{font-family:var(--serif);font-size:17px;font-weight:400;margin-bottom:4px;color:var(--s900)}
+.price-card .price{font-family:var(--serif);font-size:28px;color:var(--g700);margin:10px 0 4px;line-height:1}
+.price-card .price-note{font-family:var(--mono);font-size:10px;color:var(--s400);margin-bottom:12px}
+.price-card ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.price-card ul li{font-size:12px;color:var(--s700);display:flex;gap:6px;line-height:1.4}
+.price-card ul li::before{content:'✓';color:var(--g500);font-weight:700;flex-shrink:0}
+.price-card ul li.con-li::before{content:'×';color:var(--s400)}
+
+/* timeline */
+.tp-timeline{display:flex;flex-direction:column;gap:0;margin-top:4px}
+.tl-row{display:grid;grid-template-columns:80px 1fr 1fr 1fr 1fr;gap:0;min-height:80px;align-items:center}
+.tl-row.header{min-height:40px}
+.tl-month{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--s400);letter-spacing:1px;padding:8px 12px 8px 0;border-right:2px solid var(--s200)}
+.tl-col{padding:8px 12px;position:relative;border-right:1px dashed var(--s200)}
+.tl-col:last-child{border-right:none}
+.tl-col-hdr{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--s700);letter-spacing:0.5px;padding:8px 12px}
+.tl-pill{background:var(--g700);color:white;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:600;line-height:1.35;display:inline-block}
+.tl-pill.usgbc{background:var(--g900)}
+.tl-pill.danger{background:var(--r600)}
+.tl-pill.circle{background:var(--b600)}
+.tl-pill.mn{background:var(--p600)}
+.tl-pill.hb{background:var(--a600)}
+.tl-line{width:2px;background:var(--s300);height:100%;position:absolute;left:50%;top:0;transform:translateX(-50%)}
+.tl-note{font-family:var(--mono);font-size:10px;color:var(--s500);margin-top:4px}
+.tl-sep{height:1px;background:var(--s200);margin:4px 0}
+
+/* rec box */
+.tp-rec{background:linear-gradient(135deg,var(--g900),#0D6B4E);border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-top:4px}
+.tp-rec h2{font-family:var(--serif);font-size:32px;color:var(--w);font-weight:400;margin-bottom:12px}
+.tp-rec p{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.65;margin-bottom:16px}
+.tp-rec-price{text-align:center;background:rgba(255,255,255,0.1);border-radius:12px;padding:20px 28px;border:1px solid rgba(255,255,255,0.2)}
+.tp-rec-price .amt{font-family:var(--serif);font-size:40px;color:var(--w);line-height:1}
+.tp-rec-price .per{font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px;margin-top:4px}
+.tp-rec-price .note{font-size:11px;color:rgba(255,255,255,0.6);margin-top:6px}
+.tp-feat-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.tp-feat{font-size:12px;color:rgba(255,255,255,0.85);display:flex;gap:6px}
+.tp-feat::before{content:'✓';color:var(--g300);font-weight:700;flex-shrink:0}
+
+/* replaces */
+.replaces-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.replaces-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:20px}
+.replaces-card h3{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--s400);margin-bottom:12px}
+.replaces-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--s100);font-size:13px}
+.replaces-item:last-child{border-bottom:none}
+.replaces-item .arrow{color:var(--g500);font-size:16px;flex-shrink:0}
+.replaces-item .old{color:var(--r600);font-weight:600;flex:1}
+.replaces-item .new{color:var(--g700);font-weight:600;flex:1}
+.replaces-maybe{opacity:0.6}
+
+/* ===== CIRCLE VS TECH STACK STYLES ===== */
+.stack-hero{background:linear-gradient(135deg,#0B2D4A 0%,#1A4A7A 100%);padding:64px 24px 48px;position:relative;overflow:hidden}
+.stack-hero h1{font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--w);font-weight:400;margin-bottom:12px}
+.stack-hero h1 em{font-style:italic;color:#93C5FD}
+.stack-hero p{font-size:15px;color:rgba(255,255,255,0.75);max-width:600px;line-height:1.65}
+.stack-body{max-width:1280px;margin:0 auto;padding:0 24px 64px}
+.stack-section{margin-top:48px}
+.stack-section-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--s900);margin-bottom:4px}
+.stack-section-sub{font-size:13px;color:var(--s500);margin-bottom:20px}
+
+.stack-table{width:100%;border-collapse:collapse;background:var(--w);border-radius:12px;overflow:hidden;border:1px solid var(--s200)}
+.stack-table th{padding:14px 16px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--s500);text-align:left;border-bottom:2px solid var(--s200);background:var(--s50)}
+.stack-table td{padding:14px 16px;font-size:13px;color:var(--s700);border-bottom:1px solid var(--s100);vertical-align:middle;line-height:1.45}
+.stack-table tr:last-child td{border-bottom:none}
+.stack-table td:first-child{font-weight:600;color:var(--s900)}
+.stack-badge{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;font-weight:700}
+.badge-replace{background:var(--g100);color:var(--g700)}
+.badge-maybe{background:var(--a100);color:var(--a600)}
+.badge-keep{background:var(--s100);color:var(--s500)}
+.stack-savings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.savings-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:20px;text-align:center}
+.savings-card .amt{font-family:var(--serif);font-size:32px;color:var(--g700);line-height:1}
+.savings-card .lbl{font-size:12px;color:var(--s500);margin-top:6px;line-height:1.4}
+.one-source{background:linear-gradient(135deg,#0B2D4A,#1A4A7A);border-radius:14px;padding:36px;color:white;margin-top:20px}
+.one-source h2{font-family:var(--serif);font-size:26px;font-weight:400;color:white;margin-bottom:16px}
+.one-source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.one-source-item{background:rgba(255,255,255,0.1);border-radius:8px;padding:14px;border:1px solid rgba(255,255,255,0.15);text-align:center}
+.one-source-item .icon{font-size:24px;margin-bottom:8px}
+.one-source-item .name{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.9);letter-spacing:0.5px}
+.one-source-item .was{font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px}
+
+/* ===== IF NOT NOW STYLES ===== */
+.inn-hero{background:linear-gradient(135deg,#4A1515 0%,#7C2020 100%);padding:64px 24px 48px}
+.inn-hero h1{font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--w);font-weight:400;margin-bottom:12px}
+.inn-hero h1 em{font-style:italic;color:#FCA5A5}
+.inn-hero p{font-size:15px;color:rgba(255,255,255,0.75);max-width:600px;line-height:1.65}
+.inn-body{max-width:1280px;margin:0 auto;padding:0 24px 64px}
+.inn-alert{background:#FEF2F2;border:2px solid var(--r600);border-radius:14px;padding:32px;margin-top:40px}
+.inn-alert h2{font-family:var(--serif);font-size:24px;color:var(--r600);font-weight:400;margin-bottom:16px}
+.inn-alert ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.inn-alert ul li{font-size:14px;color:var(--s700);display:flex;gap:10px;line-height:1.55}
+.inn-alert ul li::before{content:'✗';color:var(--r600);font-weight:700;flex-shrink:0;font-size:16px}
+.inn-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.inn-card{background:var(--w);border:1px solid var(--s200);border-radius:12px;padding:24px}
+.inn-card h3{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:12px;color:var(--s900)}
+.inn-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.inn-card ul li{font-size:13px;color:var(--s700);display:flex;gap:8px;line-height:1.5}
+.inn-card ul li::before{content:'→';color:var(--r600);font-weight:700;flex-shrink:0}
+.inn-unsolved{background:var(--r600);border-radius:14px;padding:32px;margin-top:20px;color:white}
+.inn-unsolved h2{font-family:var(--serif);font-size:24px;color:white;font-weight:400;margin-bottom:16px}
+.inn-unsolved-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.inn-unsolved-item{background:rgba(255,255,255,0.15);border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.2)}
+.inn-unsolved-item .icon{font-size:20px;margin-bottom:8px}
+.inn-unsolved-item h4{font-family:var(--mono);font-size:11px;color:white;letter-spacing:0.5px;margin-bottom:6px}
+.inn-unsolved-item p{font-size:12px;color:rgba(255,255,255,0.8);line-height:1.5}
+.inn-vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.inn-vs-col{border-radius:12px;padding:24px}
+.inn-vs-col.bad{background:#FEF2F2;border:2px solid var(--r600)}
+.inn-vs-col.good{background:var(--g50);border:2px solid var(--g500)}
+.inn-vs-col h3{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:12px}
+.inn-vs-col.bad h3{color:var(--r600)}
+.inn-vs-col.good h3{color:var(--g700)}
+.inn-vs-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.inn-vs-col ul li{font-size:13px;color:var(--s700);display:flex;gap:8px;line-height:1.5}
+.inn-vs-col.bad ul li::before{content:'✗';color:var(--r600);font-weight:700}
+.inn-vs-col.good ul li::before{content:'✓';color:var(--g700);font-weight:700}
+
+@media(max-width:900px){
+  .tp-intro-grid,.replaces-grid,.price-grid,.tp-rec,.one-source-grid,.inn-grid,.inn-unsolved-grid,.inn-vs,.stack-savings{grid-template-columns:1fr}
+  .tp-rec{grid-template-columns:1fr}
+  .tp-feat-list{grid-template-columns:1fr}
+  .tl-row{grid-template-columns:60px 1fr 1fr}
+}
 </style>
 </head>
 <body>
 
 <nav class="tab-bar">
   <div class="tab-bar-logo">USGBC-CA</div>
-  <button class="tab-btn active" onclick="switchTab('journey')" id="tab-journey">
+  <button class="tab-btn active" onclick="switchTab('proposal')" id="tab-proposal">
+    <span class="tab-icon">📋</span> Tech Proposal
+  </button>
+  <button class="tab-btn" onclick="switchTab('stack')" id="tab-stack">
+    <span class="tab-icon">🔄</span> Circle vs Our Tech Stack
+    <span class="tab-badge">NEW</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('ifnot')" id="tab-ifnot">
+    <span class="tab-icon">⚠️</span> If Not Now
+  </button>
+  <button class="tab-btn" onclick="switchTab('journey')" id="tab-journey">
     <span class="tab-icon">🗺</span> Member Journey
   </button>
   <button class="tab-btn" onclick="switchTab('survey')" id="tab-survey">
-    <span class="tab-icon">📊</span> Community Hub Survey Findings
-    <span class="tab-badge">NEW</span>
+    <span class="tab-icon">📊</span> Survey Findings
   </button>
 </nav>
 
+<!-- ===== TECH PROPOSAL TAB ===== -->
+<div class="tab-panel active" id="panel-proposal">
+
+  <!-- Hero -->
+  <div class="tp-hero">
+    <div class="tp-hero-inner">
+      <div class="tp-tag">Community Team · April 2026</div>
+      <h1>Digital Member Platform<br><em>Tech Proposal</em></h1>
+      <p>We need a platform where members engage, access benefits, and connect — and where community leaders can communicate directly. Here's what we evaluated, what it costs, and what we recommend.</p>
+      <div class="tp-rec-badge">⭐ Recommendation: Circle Plus Plan</div>
+    </div>
+  </div>
+
+  <div style="background:#F5F3F0;padding-bottom:64px">
+  <div class="tp-body">
+
+    <!-- Introduction -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Introduction</span>
+      <div class="tp-section-title">What We Need & Why</div>
+      <div class="tp-intro-grid" style="margin-top:16px">
+        <div class="tp-card">
+          <h3>Needs</h3>
+          <ul>
+            <li>Easy to use member platform for members to engage and access member benefits</li>
+            <li>Member codes for events</li>
+            <li>Free committee meeting RSVPs</li>
+            <li>Member exclusive tours</li>
+            <li>Committee & RLAB leadership opportunities and voting</li>
+            <li>Exclusive opportunities from members</li>
+            <li>Platform for community leaders and members to communicate and collaborate</li>
+          </ul>
+        </div>
+        <div class="tp-card">
+          <h3>Opportunities</h3>
+          <ul>
+            <li>Redefine value of membership through a new, easy to use platform</li>
+            <li>Support Committee & RLAB leaders in connecting with members</li>
+            <li>Accessible member resources such as committee meeting RSVPs and member codes</li>
+          </ul>
+          <h3 style="margin-top:20px">Overview</h3>
+          <ul>
+            <li>Digital member platforms provide members with exclusive access and benefits</li>
+            <li>Potential for USGBC-CA to scale pricing and access in the future</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background & Benefits -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Background & Benefits</span>
+      <div class="tp-section-title">Use Cases, Problems & Improvements</div>
+      <div class="tp-intro-grid" style="margin-top:16px">
+        <div class="tp-card">
+          <h3>Use Case Scenarios</h3>
+          <ul>
+            <li>Introductions, resource sharing, discussions, messaging, collaborating</li>
+            <li>Committee programming and meetings</li>
+            <li>Posting member-only events and opportunities</li>
+            <li>Announcements from USGBC-CA team</li>
+            <li>Sharing member resources & benefits (e.g. member codes)</li>
+            <li><strong>Potentially:</strong> Member CRM, volunteer program coordination, USGBC-CA courses</li>
+          </ul>
+        </div>
+        <div class="tp-card">
+          <h3>Problems to Solve</h3>
+          <ul>
+            <li>Hard to navigate UX for members</li>
+            <li>Hard to RSVP for committee meetings</li>
+            <li>Difficult for community leaders and members to communicate and stay up to date</li>
+            <li>Removing Community Team as the only bridge between leaders and members</li>
+            <li>Non-functional member directory</li>
+          </ul>
+          <h3 style="margin-top:20px">Improvement Opportunities</h3>
+          <ul>
+            <li>Can separate feeds by interest or posting groups</li>
+            <li>Can make community leaders moderators of their own spaces</li>
+            <li>Create a 'welcome' or 'start here' section for new members</li>
+            <li>Member directory that actually works</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Comparison -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Platform Comparison</span>
+      <div class="tp-section-title">Pros & Cons by Platform</div>
+      <div style="margin-top:16px;overflow-x:auto">
+        <table class="tp-table">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Pros</th>
+              <th>Cons</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Higher Logic<br><small style="font-weight:400;color:var(--s400)">Current</small></td>
+              <td>
+                <div class="pro">✓ Can nest multiple features into one space</div>
+                <div class="pro">✓ Can create events with/without RSVP button</div>
+                <div class="pro">✓ Banner widget on home page</div>
+              </td>
+              <td>
+                <div class="con">✗ Hard to navigate</div>
+                <div class="con">✗ Meeting RSVP does not work or show in calendars</div>
+                <div class="con">✗ Member directory does not work</div>
+              </td>
+            </tr>
+            <tr>
+              <td>Mighty Networks</td>
+              <td>
+                <div class="pro">✓ Can nest multiple features into one space</div>
+                <div class="pro">✓ Positive recommendation / gamification feature</div>
+                <div class="pro">✓ 'Challenge' feature for campaigns</div>
+                <div class="pro">✓ Potential to use as membership CRM</div>
+                <div class="pro">✓ Member matchup feature</div>
+                <div class="pro">✓ Flat fee — does not increase with scale</div>
+                <div class="pro">✓ Can make people admins of certain spaces</div>
+                <div class="pro">✓ Headless member API & AI builder coming soon</div>
+              </td>
+              <td>
+                <div class="con">✗ Depending on plan, highest in cost</div>
+                <div class="con">✗ No launch and migration support at cheapest tier</div>
+              </td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong style="color:var(--g700)">⭐ Circle</strong><br><small style="color:var(--g500);font-weight:600">Recommended</small></td>
+              <td>
+                <div class="pro">✓ Integration with many other platforms</div>
+                <div class="pro">✓ Potential to use as membership CRM</div>
+                <div class="pro">✓ Can make people admins of certain spaces</div>
+                <div class="pro">✓ Headless member API — server-side API for custom member experiences</div>
+                <div class="pro">✓ AI Agents & workflows (Plus plan)</div>
+                <div class="pro">✓ Custom SSO (Plus plan)</div>
+                <div class="pro">✓ Dedicated Customer Success Manager (Plus plan)</div>
+              </td>
+              <td>
+                <div class="con">✗ Depending on plan, highest or second highest in cost</div>
+                <div class="con">✗ Cannot nest multiple features in one space</div>
+              </td>
+            </tr>
+            <tr>
+              <td>Heartbeat</td>
+              <td>
+                <div class="pro">✓ AI tool built in</div>
+                <div class="pro">✓ Member matchup feature</div>
+                <div class="pro">✓ Fastest implementation (6 weeks)</div>
+                <div class="pro">✓ Lowest starting cost</div>
+              </td>
+              <td>
+                <div class="con">✗ Cannot nest multiple features in one space</div>
+                <div class="con">✗ No headless member API</div>
+              </td>
+            </tr>
+            <tr style="background:var(--s50)">
+              <td style="color:var(--s500);font-weight:400">Mighty Networks,<br>Circle & Heartbeat<br><em>all share:</em></td>
+              <td colspan="2" style="color:var(--s700)">
+                Left sidebar navigation (similar to Slack) · Spaces grouped by category · Welcome/start here section · Main feed, events, announcements, courses, resources · Automations to promote engagement
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Resources & Cost</span>
+      <div class="tp-section-title">Pricing & Plans</div>
+      <div class="price-grid" style="margin-top:16px">
+        <div class="price-card">
+          <h3>Higher Logic</h3>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--s400);margin-bottom:8px">CURRENT PLATFORM</div>
+          <div class="price">$10,320<span style="font-size:16px;color:var(--s400)"> + $1,800 impl.</span></div>
+          <div class="price-note">per year</div>
+          <ul>
+            <li>Digital member platform only</li>
+            <li>Higher Logic Thrive Community</li>
+            <li class="con-li">Broken RSVP & directory</li>
+            <li class="con-li">Hard to navigate</li>
+            <li class="con-li">Contract expires June 30</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <div class="featured-badge">⭐ RECOMMENDED</div>
+          <h3>Circle</h3>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--g500);margin-bottom:8px">CIRCLE PLUS PLAN</div>
+          <div class="price" style="color:var(--g700)">~$10,000</div>
+          <div class="price-note">per year — cost neutral</div>
+          <ul>
+            <li>AI Agents & AI workflows</li>
+            <li>Custom single sign-on (SSO)</li>
+            <li>Priority migration services</li>
+            <li>Dedicated Customer Success Manager</li>
+            <li>Unlimited admins & moderators</li>
+            <li>Headless member API</li>
+          </ul>
+          <div style="margin-top:12px;font-size:11px;color:var(--s500)">Also available: Business ($2,388) · Plus with Branded App (~$15–20K)</div>
+        </div>
+        <div class="price-card">
+          <h3>Heartbeat</h3>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--s400);margin-bottom:8px">GROW PLAN</div>
+          <div class="price">$1,788</div>
+          <div class="price-note">$149/mo — lowest cost option</div>
+          <ul>
+            <li>Up to 5,000 members</li>
+            <li>Migration services</li>
+            <li>AI Built tool included</li>
+            <li>Unbranded app</li>
+            <li class="con-li">Limited hosts & moderators</li>
+            <li class="con-li">No headless member API</li>
+          </ul>
+          <div style="margin-top:12px;font-size:11px;color:var(--s500)">Scale plan: $10,188/yr — branded app, unlimited members</div>
+        </div>
+        <div class="price-card">
+          <h3>Mighty Networks</h3>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--s400);margin-bottom:8px">MIGHTY PRO BASIC</div>
+          <div class="price">$14,000<span style="font-size:16px;color:var(--s400)"> + $3K</span></div>
+          <div class="price-note">per year + implementation</div>
+          <ul>
+            <li>Branded app with logo & colors</li>
+            <li>All platform features</li>
+            <li>Unlimited hosts, moderators, spaces</li>
+            <li>Option to use as member CRM</li>
+            <li class="con-li">No launch/migration support</li>
+            <li class="con-li">Most expensive option</li>
+          </ul>
+          <div style="margin-top:12px;font-size:11px;color:var(--s500)">Range: $17,000–$48,000/yr depending on plan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Implementation Timeline</span>
+      <div class="tp-section-title">Decision Needed Early May</div>
+      <div style="background:var(--w);border:1px solid var(--s200);border-radius:12px;overflow:hidden;margin-top:16px">
+        <div class="tl-row header" style="background:var(--s50)">
+          <div class="tl-month" style="border-right:2px solid var(--s200);padding:12px"></div>
+          <div class="tl-col-hdr">USGBC-CA</div>
+          <div class="tl-col-hdr">Circle ⭐</div>
+          <div class="tl-col-hdr">Mighty Networks</div>
+          <div class="tl-col-hdr">Heartbeat</div>
+        </div>
+        <div class="tl-row" style="background:var(--s50)">
+          <div class="tl-month">APR</div>
+          <div class="tl-col"><span class="tl-pill usgbc">End of April — Tech Proposal</span></div>
+          <div class="tl-col"></div>
+          <div class="tl-col"></div>
+          <div class="tl-col"></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-month">MAY</div>
+          <div class="tl-col"><span class="tl-pill usgbc" style="background:var(--g700)">⚠️ Beginning of May — Decision Made</span></div>
+          <div class="tl-col"><div class="tl-note">5/15 Earliest Start</div></div>
+          <div class="tl-col"><span class="tl-pill mn">Early May Start</span></div>
+          <div class="tl-col"><span class="tl-pill hb">Early May Start</span></div>
+        </div>
+        <div class="tl-row" style="background:var(--s50)">
+          <div class="tl-month">JUN</div>
+          <div class="tl-col"><span class="tl-pill danger">6/30 Higher Logic Expires</span></div>
+          <div class="tl-col"><span class="tl-pill circle">6/15 Implementation Starts</span><div class="tl-note">6-8 week timeline</div></div>
+          <div class="tl-col"><div class="tl-note">8-12 week timeline</div></div>
+          <div class="tl-col"><div class="tl-note">6 week timeline</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-month">JUL</div>
+          <div class="tl-col"></div>
+          <div class="tl-col"></div>
+          <div class="tl-col"></div>
+          <div class="tl-col"><span class="tl-pill hb">Early-Mid July Launch 🚀</span></div>
+        </div>
+        <div class="tl-row" style="background:var(--s50)">
+          <div class="tl-month">AUG</div>
+          <div class="tl-col"></div>
+          <div class="tl-col"><span class="tl-pill circle">Late July / Early Aug Launch 🚀</span></div>
+          <div class="tl-col"><span class="tl-pill mn">Early-Mid Aug Launch 🚀</span></div>
+          <div class="tl-col"></div>
+        </div>
+      </div>
+      <div class="s-insight ins-r" style="margin-top:12px">
+        <div class="ins-label">⚠️ Critical Deadline</div>
+        <p>Decision must be made by early May. Any delay risks a gap between June 30 (Higher Logic expires) and new platform launch — leaving members with no community platform.</p>
+      </div>
+    </div>
+
+    <!-- Recommendation -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Our Recommendation</span>
+      <div class="tp-rec">
+        <div>
+          <h2>Circle — Circle Plus Plan</h2>
+          <p>Circle Plus is cost-neutral to what we're currently paying for Higher Logic, while solving every problem we've documented — SSO, working RSVP, functional directory, committee moderators, and a platform members actually want to use.</p>
+          <div class="tp-feat-list">
+            <div class="tp-feat">AI Agents & AI engagement workflows</div>
+            <div class="tp-feat">Custom single sign-on (SSO) — one login</div>
+            <div class="tp-feat">Priority technical & migration services</div>
+            <div class="tp-feat">Dedicated Customer Success Manager</div>
+            <div class="tp-feat">Unlimited admins & moderators</div>
+            <div class="tp-feat">Headless member API for GetUWired</div>
+            <div class="tp-feat">Working events, RSVP, and calendar sync</div>
+            <div class="tp-feat">Two members mentioned Circle — unprompted</div>
+          </div>
+        </div>
+        <div class="tp-rec-price">
+          <div class="amt">~$10K</div>
+          <div class="per">PER YEAR</div>
+          <div class="note">vs. $10,320 current<br>Cost neutral ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What it replaces -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Tech Stack Impact</span>
+      <div class="tp-section-title">What This Could Replace</div>
+      <div class="replaces-grid" style="margin-top:16px">
+        <div class="replaces-card">
+          <h3>Will Replace</h3>
+          <div class="replaces-item">
+            <span class="old">Higher Logic</span>
+            <span class="arrow">→</span>
+            <span class="new">Circle Community Hub</span>
+          </div>
+        </div>
+        <div class="replaces-card">
+          <h3>Potential to Replace</h3>
+          <div class="replaces-item replaces-maybe">
+            <span class="old">MemberPress CRM</span>
+            <span class="arrow">→</span>
+            <span class="new">Circle Membership CRM</span>
+          </div>
+          <div class="replaces-item replaces-maybe">
+            <span class="old">Jotform / Typeform</span>
+            <span class="arrow">→</span>
+            <span class="new">Circle Forms & Surveys</span>
+          </div>
+          <div class="replaces-item replaces-maybe">
+            <span class="old">Campground / Google Sheets</span>
+            <span class="arrow">→</span>
+            <span class="new">Circle Volunteer Spaces</span>
+          </div>
+          <div class="replaces-item replaces-maybe">
+            <span class="old">PathLMS / Momentive</span>
+            <span class="arrow">→</span>
+            <span class="new">Circle Courses (Blue Sky)</span>
+          </div>
+        </div>
+      </div>
+      <div class="s-insight ins-a" style="margin-top:12px">
+        <div class="ins-label">Staff Hour Savings</div>
+        <p>Emailing committee members about updates · Onboarding new members onto the platform · Troubleshooting committee meeting RSVPs · If using Circle as CRM: resolving member data issues without GetUWired dependency</p>
+      </div>
+    </div>
+
+  </div><!-- /tp-body -->
+  </div><!-- /bg -->
+
+  <div class="foot">
+    USGBC-CA · Tech Proposal — Digital Member Platform · Community Team · April 2026
+  </div>
+
+</div><!-- /panel-proposal -->
+
+<!-- ===== CIRCLE VS TECH STACK TAB ===== -->
+<div class="tab-panel" id="panel-stack">
+
+  <div class="stack-hero">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#93C5FD;margin-bottom:16px">Circle as Our One Source of Truth</div>
+      <h1>Circle vs <em>Our Current Tech Stack</em></h1>
+      <p>We currently pay for dozens of tools across multiple teams. Here's how Circle can consolidate the tools most relevant to member experience — reducing fragmentation, saving money, and giving members one place for everything.</p>
+    </div>
+  </div>
+
+  <div style="background:#F5F3F0;padding-bottom:64px">
+  <div class="stack-body">
+
+    <!-- One Source of Truth visual -->
+    <div class="tp-section">
+      <span class="tp-section-tag">The Vision</span>
+      <div class="stack-section-title">One Platform for All Things Member</div>
+      <div class="stack-section-sub">Today members jump between 4+ platforms with no single source of truth. Circle consolidates these into one login, one experience.</div>
+      <div class="one-source">
+        <h2>Circle as the Member Hub — One Source of Truth</h2>
+        <div class="one-source-grid">
+          <div class="one-source-item">
+            <div class="icon">💬</div>
+            <div class="name">Community & Discussions</div>
+            <div class="was">was: Higher Logic</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">📅</div>
+            <div class="name">Events & Committee RSVPs</div>
+            <div class="was">was: Eventbrite + Higher Logic + Luma</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">📚</div>
+            <div class="name">Courses & Learning</div>
+            <div class="was">was: PathLMS / Momentive</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">👤</div>
+            <div class="name">Member Directory & CRM</div>
+            <div class="was">was: MemberPress + Copper CRM</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">🎁</div>
+            <div class="name">Member Benefits & Codes</div>
+            <div class="was">was: Email + Newsletter</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">🙋</div>
+            <div class="name">Volunteer Coordination</div>
+            <div class="was">was: Campground + Jotform + Google Sheets</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">📋</div>
+            <div class="name">Surveys & Forms</div>
+            <div class="was">was: Jotform + Typeform + Google Forms</div>
+          </div>
+          <div class="one-source-item">
+            <div class="icon">📢</div>
+            <div class="name">Announcements & News</div>
+            <div class="was">was: Mailchimp + Social Media only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Membership tools replacement -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Membership Team Tools</span>
+      <div class="stack-section-title">What Circle Replaces for Membership</div>
+      <div class="stack-section-sub">These are the tools most directly impacted by switching to Circle.</div>
+      <table class="stack-table">
+        <thead>
+          <tr>
+            <th>Current Tool</th>
+            <th>What It Does</th>
+            <th>Circle Equivalent</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Higher Logic</td>
+            <td>Digital member community platform</td>
+            <td>Circle Community — Spaces, feeds, discussions, announcements</td>
+            <td><span class="stack-badge badge-replace">✓ Direct Replace</span></td>
+          </tr>
+          <tr>
+            <td>MemberPress</td>
+            <td>Memberships + payment source of truth</td>
+            <td>Circle Membership CRM — member data, access levels, SSO</td>
+            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+          </tr>
+          <tr>
+            <td>Jotform ($1,068/yr)</td>
+            <td>Surveys, leadership nominations, volunteer recruitment</td>
+            <td>Circle Forms & Automations</td>
+            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+          </tr>
+          <tr>
+            <td>Typeform ($315/yr)</td>
+            <td>Surveys, leadership nominations</td>
+            <td>Circle Forms</td>
+            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+          </tr>
+          <tr>
+            <td>Campground</td>
+            <td>CA volunteer recruitment site</td>
+            <td>Circle Spaces — volunteer-specific space with applications</td>
+            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+          </tr>
+          <tr>
+            <td>Copper CRM ($17,640/yr)</td>
+            <td>Member data management</td>
+            <td>Circle Member CRM + Headless API integration</td>
+            <td><span class="stack-badge badge-maybe">◐ Evaluate Further</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Events tools -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Events Team Tools</span>
+      <div class="stack-section-title">Events & Calendar Consolidation</div>
+      <div class="stack-section-sub">Members currently navigate between Eventbrite, Higher Logic events, and Luma. Circle consolidates this.</div>
+      <table class="stack-table">
+        <thead>
+          <tr>
+            <th>Current Tool</th>
+            <th>What It Does</th>
+            <th>Circle Equivalent</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Eventbrite</td>
+            <td>Event platform — public registrations</td>
+            <td>Circle Events — RSVP, calendar sync, event discussions</td>
+            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+          </tr>
+          <tr>
+            <td>Luma</td>
+            <td>Event platform</td>
+            <td>Circle Events</td>
+            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+          </tr>
+          <tr>
+            <td>Higher Logic Events</td>
+            <td>Committee meeting RSVPs (broken)</td>
+            <td>Circle Events — working RSVP with calendar sync</td>
+            <td><span class="stack-badge badge-replace">✓ Direct Replace</span></td>
+          </tr>
+          <tr>
+            <td>Swoogo</td>
+            <td>Virtual event platform</td>
+            <td>Keep for large virtual events — Circle handles smaller community events</td>
+            <td><span class="stack-badge badge-keep">— Keep</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Learning tools -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Learning & Courses — Blue Sky</span>
+      <div class="stack-section-title">PathLMS → Circle Courses</div>
+      <div class="stack-section-sub">This is a longer-term opportunity. Circle has native course functionality that could eventually replace PathLMS.</div>
+      <table class="stack-table">
+        <thead>
+          <tr>
+            <th>Current Tool</th>
+            <th>What It Does</th>
+            <th>Circle Equivalent</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PathLMS / Momentive</td>
+            <td>Learning management system; training delivery (5 admin accounts)</td>
+            <td>Circle Courses — native course uploads, member-gated access, progress tracking</td>
+            <td><span class="stack-badge badge-maybe">◐ Blue Sky / Phase 2</span></td>
+          </tr>
+          <tr>
+            <td>YM Careers / Momentive</td>
+            <td>Green jobs board, resume tools, career pathways</td>
+            <td>Circle Resources or dedicated Jobs Space</td>
+            <td><span class="stack-badge badge-maybe">◐ Evaluate</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="s-insight ins-g" style="margin-top:12px">
+        <div class="ins-label">Why This Matters</div>
+        <p>If USGBC-CA courses, career resources, and learning content lived inside Circle, members would have one authenticated space for everything — community, events, learning, and benefits. This is what members told us they want in the survey.</p>
+      </div>
+    </div>
+
+    <!-- Savings summary -->
+    <div class="tp-section">
+      <span class="tp-section-tag">Cost Impact</span>
+      <div class="stack-section-title">Potential Annual Savings</div>
+      <div class="stack-savings" style="margin-top:16px">
+        <div class="savings-card">
+          <div class="amt">$1,383</div>
+          <div class="lbl">Jotform + Typeform<br>replaced by Circle Forms</div>
+        </div>
+        <div class="savings-card">
+          <div class="amt" style="color:var(--a600)">TBD</div>
+          <div class="lbl">PathLMS / Momentive<br>if courses move to Circle</div>
+        </div>
+        <div class="savings-card">
+          <div class="amt" style="color:var(--a600)">$17,640</div>
+          <div class="lbl">Copper CRM<br>if Circle handles member data (evaluate)</div>
+        </div>
+      </div>
+      <div class="s-insight ins-g" style="margin-top:12px">
+        <div class="ins-label">Plus Staff Time Savings</div>
+        <p>Emailing committee members about updates · Onboarding new members by email · Troubleshooting RSVPs · Bringing in GetUWired to fix CRM issues · Staff hours currently spent being the bridge between leaders and members</p>
+      </div>
+    </div>
+
+  </div><!-- /stack-body -->
+  </div><!-- /bg -->
+
+  <div class="foot">
+    USGBC-CA · Circle vs Our Tech Stack · April 2026
+  </div>
+
+</div><!-- /panel-stack -->
+
+<!-- ===== IF NOT NOW TAB ===== -->
+<div class="tab-panel" id="panel-ifnot">
+
+  <div style="background:linear-gradient(135deg,var(--g900) 0%,#1A3A4A 100%);padding:64px 24px 48px">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--g300);margin-bottom:16px">Exploring Our Options · June 30 Sunset</div>
+      <h1 style="font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--w);font-weight:400;margin-bottom:12px">If We Don't Replace <em style="font-style:italic;color:var(--g300)">Higher Logic</em></h1>
+      <p style="font-size:15px;color:rgba(255,255,255,0.75);max-width:680px;line-height:1.65">Higher Logic's contract ends June 30. Sunsetting the Community Hub is a valid path. This page explores what that looks like — what goes away, what we'd still need to solve, and what a good member experience could look like without a dedicated community platform.</p>
+    </div>
+  </div>
+
+  <div style="background:#F5F3F0;padding-bottom:64px">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+
+    <!-- Context card -->
+    <div style="background:var(--w);border:1px solid var(--s200);border-radius:14px;padding:32px;margin-top:40px">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--s400);margin-bottom:12px">Context</div>
+      <h2 style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--s900);margin-bottom:12px">What Sunsetting Higher Logic Actually Means</h2>
+      <p style="font-size:14px;color:var(--s700);line-height:1.7;margin-bottom:12px">When Higher Logic goes away June 30, we lose the Community Hub — the space that currently houses discussions, resources, the member directory, and committee communities. There's nothing inherently wrong with not replacing it immediately. The question is: <strong>what fills those gaps, and how do members still get a great experience?</strong></p>
+      <p style="font-size:14px;color:var(--s700);line-height:1.7">One key insight from our meeting: <strong>members are not recognizing that the social and community aspect of the Member Hub is itself a member benefit.</strong> The platform — the ability to connect with peers, engage in committees, access resources, and participate in discussions — is part of what membership includes. If members aren't seeing it that way, it opens up an important conversation about how we communicate the value of membership holistically, regardless of which platform we use.</p>
+    </div>
+
+    <!-- What goes away -->
+    <div style="margin-top:40px">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--s400);margin-bottom:8px">What Changes</div>
+      <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;color:var(--s900);margin-bottom:16px">What the Hub Currently Provides</h2>
+      <div class="s-two">
+        <div class="s-card">
+          <h3>Features That Go Away</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--s400);flex-shrink:0;font-size:16px">○</span>
+              <span><strong>Discussion forums</strong> — community threads across 33 communities (though 82.5% received zero replies)</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--s400);flex-shrink:0;font-size:16px">○</span>
+              <span><strong>Member directory</strong> — though currently non-functional for discovery</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--s400);flex-shrink:0;font-size:16px">○</span>
+              <span><strong>Resource library</strong> — 641 views and 370 downloads in 12 months</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--s400);flex-shrink:0;font-size:16px">○</span>
+              <span><strong>Committee event RSVPs</strong> — though the current RSVP is broken and unreliable</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--s400);flex-shrink:0;font-size:16px">○</span>
+              <span><strong>Community spaces</strong> — committee and RLAB group spaces</span>
+            </div>
+          </div>
+        </div>
+        <div class="s-card">
+          <h3>What Remains Available</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--g500);flex-shrink:0;font-size:16px">✓</span>
+              <span><strong>Mailchimp</strong> — member newsletters and announcements</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--g500);flex-shrink:0;font-size:16px">✓</span>
+              <span><strong>WordPress</strong> — main website, events, news</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--g500);flex-shrink:0;font-size:16px">✓</span>
+              <span><strong>Eventbrite / Luma / Swoogo</strong> — event registration and RSVPs</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--g500);flex-shrink:0;font-size:16px">✓</span>
+              <span><strong>Social media</strong> — Instagram, LinkedIn, Twitter/X for reach</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--g500);flex-shrink:0;font-size:16px">✓</span>
+              <span><strong>Google Drive / resources</strong> — internal resource sharing</span>
+            </div>
+            <div style="display:flex;gap:10px;font-size:13px;color:var(--s700);align-items:flex-start">
+              <span style="color:var(--g500);flex-shrink:0;font-size:16px">✓</span>
+              <span><strong>Slack</strong> — internal team comms (could be opened to committee leaders)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member benefits insight -->
+    <div style="background:var(--w);border:1px solid var(--s200);border-radius:14px;padding:32px;margin-top:20px">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--a600);margin-bottom:8px">Key Meeting Insight</div>
+      <h2 style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--s900);margin-bottom:12px">Members Aren't Recognizing the Community Platform as a Member Benefit</h2>
+      <p style="font-size:14px;color:var(--s700);line-height:1.7;margin-bottom:16px">This came up in our meeting as an important distinction: <strong>the social and community experience — connecting with peers, participating in committees, accessing resources, engaging in discussions — is part of what membership includes.</strong> It's a benefit we offer. But members haven't been seeing it that way. They may not realize that the Member Hub is something their membership gives them access to, or that engaging with it is part of getting value from USGBC-CA.</p>
+      <p style="font-size:14px;color:var(--s700);line-height:1.7;margin-bottom:16px">This is worth discussing regardless of which platform path we take — because the answer shapes both how we design the platform experience and how we communicate membership value to members.</p>
+      <div class="s-two">
+        <div style="background:var(--a100);border-radius:10px;padding:16px">
+          <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--a600);margin-bottom:8px">What Members May Not Realize</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+            <li style="font-size:13px;color:var(--s700);display:flex;gap:8px"><span style="color:var(--a600)">→</span>The Member Hub is a benefit included with their membership</li>
+            <li style="font-size:13px;color:var(--s700);display:flex;gap:8px"><span style="color:var(--a600)">→</span>Connecting with peers and committees is part of the value</li>
+            <li style="font-size:13px;color:var(--s700);display:flex;gap:8px"><span style="color:var(--a600)">→</span>Resources, discussions, and events in the Hub are member-exclusive</li>
+            <li style="font-size:13px;color:var(--s700);display:flex;gap:8px"><span style="color:var(--a600)">→</span>Community participation is something their dues support and enable</li>
+          </ul>
+        </div>
+        <div style="background:var(--g100);border-radius:10px;padding:16px">
+          <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--g700);margin-bottom:8px">The Broader Question</div>
+          <p style="font-size:13px;color:var(--s700);line-height:1.6">Whether we replace Higher Logic or not, <strong>how do we help members understand that community and connection is a core part of what USGBC-CA membership offers them?</strong> This is both a platform design question and a membership communication question.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Things still to solve -->
+    <div style="margin-top:40px">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--s400);margin-bottom:8px">Open Questions</div>
+      <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;color:var(--s900);margin-bottom:16px">What We'd Still Need to Solve</h2>
+      <p style="font-size:14px;color:var(--s500);margin-bottom:20px">These questions exist regardless of whether we replace Higher Logic. Sunsetting the Hub doesn't make them go away — it just means we answer them differently.</p>
+      <div class="inn-grid">
+        <div class="inn-card">
+          <h3>Member Benefits Communication</h3>
+          <ul>
+            <li>How do members find and access their member codes for events?</li>
+            <li>How are exclusive member tours and events communicated and gated?</li>
+            <li>Where does a new member go to understand what membership includes?</li>
+          </ul>
+        </div>
+        <div class="inn-card">
+          <h3>Committee Meeting RSVPs</h3>
+          <ul>
+            <li>The Higher Logic RSVP was already broken — what replaces it?</li>
+            <li>Could Eventbrite, Luma, or Google Forms handle committee meeting signups?</li>
+            <li>How do RSVPs sync to members' calendars reliably?</li>
+          </ul>
+        </div>
+        <div class="inn-card">
+          <h3>Community Leader Communication</h3>
+          <ul>
+            <li>Without a dedicated space, how do leaders communicate with their committee members?</li>
+            <li>Could a mailing list or newsletter system work for each committee?</li>
+            <li>What does moderation and content control look like?</li>
+          </ul>
+        </div>
+        <div class="inn-card">
+          <h3>Leadership & Voting</h3>
+          <ul>
+            <li>How do members get involved in committee leadership?</li>
+            <li>How do members vote on their leadership without a dedicated platform?</li>
+            <li>Could Jotform, Typeform, or Google Forms handle nominations?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- What good looks like -->
+    <div style="background:var(--g900);border-radius:14px;padding:36px;margin-top:32px;color:white">
+      <div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--g300);margin-bottom:12px">The North Star</div>
+      <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;color:var(--w);margin-bottom:16px">What a Good Member Experience Looks Like — With or Without a New Platform</h2>
+      <div class="s-two" style="gap:20px;margin-bottom:0">
+        <div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.82);line-height:1.7;margin-bottom:12px">Regardless of what we decide about replacing Higher Logic, members should be able to:</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:rgba(255,255,255,0.85);display:flex;gap:8px"><span style="color:var(--g300);font-weight:700">✓</span>Clearly understand what their membership includes</li>
+            <li style="font-size:13px;color:rgba(255,255,255,0.85);display:flex;gap:8px"><span style="color:var(--g300);font-weight:700">✓</span>Easily access member codes, exclusive events, and tours</li>
+            <li style="font-size:13px;color:rgba(255,255,255,0.85);display:flex;gap:8px"><span style="color:var(--g300);font-weight:700">✓</span>RSVP for committee meetings without friction</li>
+            <li style="font-size:13px;color:rgba(255,255,255,0.85);display:flex;gap:8px"><span style="color:var(--g300);font-weight:700">✓</span>Connect with other members across California regions</li>
+            <li style="font-size:13px;color:rgba(255,255,255,0.85);display:flex;gap:8px"><span style="color:var(--g300);font-weight:700">✓</span>Engage with their committee or RLAB without staff as intermediary</li>
+            <li style="font-size:13px;color:rgba(255,255,255,0.85);display:flex;gap:8px"><span style="color:var(--g300);font-weight:700">✓</span>Learn about leadership opportunities and how to get involved</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.82);line-height:1.7;margin-bottom:12px">The question for our team is which path gets us there:</p>
+          <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;margin-bottom:10px;border:1px solid rgba(255,255,255,0.15)">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--g300);margin-bottom:6px">PATH A — Replace Higher Logic</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5">Move to Circle (or another platform) and consolidate member experience in one place. Solves most open questions in one decision.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.15)">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--g300);margin-bottom:6px">PATH B — Sunset & Solve Individually</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5">Close Higher Logic and address each open question with existing tools — Eventbrite for RSVPs, Mailchimp for benefits communication, etc. More effort to coordinate, but avoids new platform adoption.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /inn-body -->
+  </div><!-- /bg -->
+
+  <div class="foot">
+    USGBC-CA · If Not Now — Exploring Our Options · April 2026
+  </div>
+
+</div><!-- /panel-ifnot -->
+
 <!-- ===== JOURNEY TAB ===== -->
-<div class="tab-panel active" id="panel-journey">
+<div class="tab-panel" id="panel-journey">
 
 <!-- internal nav for journey page -->
 <nav class="sticky-nav" style="top:51px">

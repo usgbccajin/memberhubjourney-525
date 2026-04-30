@@ -540,7 +540,7 @@ section:first-of-type{padding-top:40px}
           <h3 style="margin-top:20px">Improvement Opportunities</h3>
           <ul>
             <li>Can separate feeds by interest or posting groups</li>
-            <li>Can make community leaders moderators of their own spaces</li>
+            <li>Can make community leaders group leaders of their spaces — they can post, moderate, and communicate directly with their members</li>
             <li>Create a 'welcome' or 'start here' section for new members</li>
             <li>Member directory that actually works</li>
           </ul>
@@ -584,7 +584,7 @@ section:first-of-type{padding-top:40px}
                 <div class="pro">✓ Potential to use as membership CRM</div>
                 <div class="pro">✓ Member matchup feature</div>
                 <div class="pro">✓ Flat fee — does not increase with scale</div>
-                <div class="pro">✓ Can make people admins of certain spaces</div>
+                <div class="pro">✓ Can assign group leader roles within spaces</div>
                 <div class="pro">✓ Headless member API & AI builder coming soon</div>
               </td>
               <td>
@@ -596,8 +596,8 @@ section:first-of-type{padding-top:40px}
               <td><strong style="color:var(--g700)">⭐ Circle</strong><br><small style="color:var(--g500);font-weight:600">Recommended</small></td>
               <td>
                 <div class="pro">✓ Integration with many other platforms</div>
-                <div class="pro">✓ Potential to use as membership CRM</div>
-                <div class="pro">✓ Can make people admins of certain spaces</div>
+                <div class="pro">✓ Lightweight member CRM — member notes, tags, segmentation (not a full-featured CRM)</div>
+                <div class="pro">✓ Community leaders can be moderators — not per-space admins, but can lead and manage their groups</div>
                 <div class="pro">✓ Headless member API — server-side API for custom member experiences</div>
                 <div class="pro">✓ AI Agents & workflows (Plus plan)</div>
                 <div class="pro">✓ Custom SSO (Plus plan)</div>
@@ -759,16 +759,16 @@ section:first-of-type{padding-top:40px}
       <div class="tp-rec">
         <div>
           <h2>Circle — Circle Plus Plan</h2>
-          <p>Circle Plus is cost-neutral to what we're currently paying for Higher Logic, while solving every problem we've documented — SSO, working RSVP, functional directory, committee moderators, and a platform members actually want to use.</p>
+          <p>Circle Plus is cost-neutral to what we're currently paying for Higher Logic, while solving core problems we've documented — SSO, community engagement, committee leader empowerment, and a platform members actually want to use.</p>
           <div class="tp-feat-list">
             <div class="tp-feat">AI Agents & AI engagement workflows</div>
             <div class="tp-feat">Custom single sign-on (SSO) — one login</div>
             <div class="tp-feat">Priority technical & migration services</div>
             <div class="tp-feat">Dedicated Customer Success Manager</div>
-            <div class="tp-feat">Unlimited admins & moderators</div>
-            <div class="tp-feat">Headless member API for GetUWired</div>
-            <div class="tp-feat">Working events, RSVP, and calendar sync</div>
-            <div class="tp-feat">Two members mentioned Circle — unprompted</div>
+            <div class="tp-feat">Community leaders can lead and moderate their groups directly</div>
+            <div class="tp-feat">Headless member API for GetUWired integrations</div>
+            <div class="tp-feat">Events with RSVP (supplements existing event platforms)</div>
+            <div class="tp-feat">Two respondents mentioned Circle — unprompted</div>
           </div>
         </div>
         <div class="tp-rec-price">
@@ -782,8 +782,8 @@ section:first-of-type{padding-top:40px}
     <!-- What it replaces -->
     <div class="tp-section">
       <span class="tp-section-tag">Tech Stack Impact</span>
-      <div class="tp-section-title">What This Could Replace</div>
-      <div class="replaces-grid" style="margin-top:16px">
+      <div class="tp-section-title">How Circle Fits Into Our Tech Stack</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px">
         <div class="replaces-card">
           <h3>Will Replace</h3>
           <div class="replaces-item">
@@ -793,33 +793,50 @@ section:first-of-type{padding-top:40px}
           </div>
         </div>
         <div class="replaces-card">
-          <h3>Potential to Replace</h3>
+          <h3>Can Supplement</h3>
+          <div class="replaces-item replaces-maybe">
+            <span class="old">Eventbrite / Luma</span>
+            <span class="arrow">→</span>
+            <span class="new" style="color:var(--a600)">Circle Events for internal committee meetings; keep Eventbrite/Luma for public events</span>
+          </div>
           <div class="replaces-item replaces-maybe">
             <span class="old">MemberPress CRM</span>
             <span class="arrow">→</span>
-            <span class="new">Circle Membership CRM</span>
+            <span class="new" style="color:var(--a600)">Circle has lightweight member notes and tags — not a full CRM, but may be sufficient</span>
           </div>
           <div class="replaces-item replaces-maybe">
-            <span class="old">Eventbrite</span>
+            <span class="old">Volunteer coordination</span>
             <span class="arrow">→</span>
-            <span class="new">Circle Events (committee meetings, webinars, trainings)</span>
-          </div>
-          <div class="replaces-item replaces-maybe">
-            <span class="old">Jotform / Typeform</span>
-            <span class="arrow">→</span>
-            <span class="new">Circle Forms & Surveys</span>
-          </div>
-          <div class="replaces-item replaces-maybe">
-            <span class="old">Campground / Google Sheets</span>
-            <span class="arrow">→</span>
-            <span class="new">Circle Volunteer Spaces</span>
+            <span class="new" style="color:var(--a600)">Circle Spaces for opt-in and sign-ups; may still need external tools for tracking</span>
           </div>
           <div class="replaces-item replaces-maybe">
             <span class="old">PathLMS / Momentive</span>
             <span class="arrow">→</span>
-            <span class="new">Circle Courses (Blue Sky)</span>
+            <span class="new" style="color:var(--a600)">Circle Courses — possible but untested; evaluate in Phase 2</span>
           </div>
         </div>
+        <div class="replaces-card">
+          <h3>Will Still Need</h3>
+          <div class="replaces-item">
+            <span class="old" style="color:var(--s700)">Eventbrite / Luma</span>
+            <span class="arrow" style="color:var(--s400)">—</span>
+            <span class="new" style="color:var(--s700)">Keep for public events — they bring organic traffic and serve as a member recruitment funnel</span>
+          </div>
+          <div class="replaces-item">
+            <span class="old" style="color:var(--s700)">Jotform / Typeform</span>
+            <span class="arrow" style="color:var(--s400)">—</span>
+            <span class="new" style="color:var(--s700)">Circle has polls but not complex forms — keep for surveys, applications, and nominations</span>
+          </div>
+          <div class="replaces-item">
+            <span class="old" style="color:var(--s700)">Swoogo</span>
+            <span class="arrow" style="color:var(--s400)">—</span>
+            <span class="new" style="color:var(--s700)">Keep for large virtual events</span>
+          </div>
+        </div>
+      </div>
+      <div class="s-insight ins-a" style="margin-top:12px">
+        <div class="ins-label">Important Note on Events</div>
+        <p>Eventbrite and Luma are part of our member recruitment funnel — they bring organic traffic and act as a pathway into membership. Circle can handle internal committee meetings and community events, but <strong>should supplement these tools, not replace them.</strong></p>
       </div>
     </div>
 
@@ -866,41 +883,41 @@ section:first-of-type{padding-top:40px}
             <tr>
               <td>Being the bridge between leaders and members</td>
               <td>Community Team relays messages between committee leaders and their members because leaders can't post directly</td>
-              <td>Leaders are moderators of their own Spaces — direct communication</td>
+              <td>Leaders can post and communicate directly in their group Spaces — this is a key Circle strength</td>
               <td style="font-family:var(--serif);font-size:18px;color:var(--g700);font-weight:700;text-align:center">~5–8 hrs</td>
             </tr>
             <tr>
               <td>Volunteer coordination</td>
               <td>Managed across Campground, Jotform, Copper, and Google Sheets — fragmented tracking and follow-up</td>
-              <td>Consolidated volunteer space with applications, tracking, and communication in one place</td>
-              <td style="font-family:var(--serif);font-size:18px;color:var(--g700);font-weight:700;text-align:center">~3–5 hrs</td>
+              <td>Circle Spaces for volunteer opt-in and communication; may still need external tools for detailed tracking and applications</td>
+              <td style="font-family:var(--serif);font-size:18px;color:var(--g700);font-weight:700;text-align:center">~2–3 hrs</td>
             </tr>
             <tr>
               <td>CRM troubleshooting with GetUWired</td>
               <td>Staff files tickets with GetUWired for member data issues, syncing problems, and CRM bugs</td>
-              <td>Circle's built-in member management reduces dependency on external dev support</td>
-              <td style="font-family:var(--serif);font-size:18px;color:var(--g700);font-weight:700;text-align:center">~2–4 hrs</td>
+              <td>Circle's lightweight member management (notes, tags) may reduce some dependency — but is not a full CRM replacement</td>
+              <td style="font-family:var(--serif);font-size:18px;color:var(--g700);font-weight:700;text-align:center">~1–2 hrs</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div style="background:var(--g900);border-radius:12px;padding:24px;margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center">
         <div>
-          <div style="font-family:var(--serif);font-size:36px;color:var(--w);line-height:1">28–44</div>
+          <div style="font-family:var(--serif);font-size:36px;color:var(--w);line-height:1">26–40</div>
           <div style="font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px;margin-top:6px">EST. HOURS SAVED / MONTH</div>
         </div>
         <div>
-          <div style="font-family:var(--serif);font-size:36px;color:var(--w);line-height:1">336–528</div>
+          <div style="font-family:var(--serif);font-size:36px;color:var(--w);line-height:1">312–480</div>
           <div style="font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px;margin-top:6px">EST. HOURS SAVED / YEAR</div>
         </div>
         <div>
-          <div style="font-family:var(--serif);font-size:36px;color:var(--w);line-height:1">~$10K+</div>
+          <div style="font-family:var(--serif);font-size:36px;color:var(--w);line-height:1">~$8–10K</div>
           <div style="font-family:var(--mono);font-size:10px;color:var(--g300);letter-spacing:1px;margin-top:6px">EST. VALUE OF TIME SAVED<br><span style="font-size:9px;color:rgba(255,255,255,0.5)">at ~$25/hr average staff cost</span></div>
         </div>
       </div>
       <div class="s-insight ins-g" style="margin-top:12px">
         <div class="ins-label">Net Impact</div>
-        <p>Circle Plus costs ~$10,000/yr (cost-neutral to Higher Logic). But the staff hour savings alone could represent an additional ~$10,000+ in recovered productivity annually — meaning the real ROI is the platform <strong>plus</strong> the time your team gets back to focus on programming, engagement, and membership growth.</p>
+        <p>Circle Plus costs ~$10,000/yr (cost-neutral to Higher Logic). The staff hour savings could represent an additional ~$8–10K in recovered productivity annually — meaning the real ROI is the platform <strong>plus</strong> the time your team gets back to focus on programming, engagement, and membership growth.</p>
       </div>
     </div>
 
@@ -918,9 +935,9 @@ section:first-of-type{padding-top:40px}
 
   <div class="stack-hero">
     <div style="max-width:1280px;margin:0 auto">
-      <div style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#93C5FD;margin-bottom:16px">Circle as Our One Source of Truth</div>
+      <div style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#93C5FD;margin-bottom:16px">Circle's Role in Our Tech Stack</div>
       <h1>Circle vs <em>Our Current Tech Stack</em></h1>
-      <p>We currently pay for dozens of tools across multiple teams. Here's how Circle can consolidate the tools most relevant to member experience — reducing fragmentation, saving money, and giving members one place for everything.</p>
+      <p>We currently pay for dozens of tools across multiple teams. Here's an honest look at where Circle fits into our stack — what it directly replaces, what it supplements, and what we'll still need to keep.</p>
     </div>
   </div>
 
@@ -931,49 +948,49 @@ section:first-of-type{padding-top:40px}
     <div class="tp-section">
       <span class="tp-section-tag">The Vision</span>
       <div class="stack-section-title">One Platform for All Things Member</div>
-      <div class="stack-section-sub">Today members jump between 4+ platforms with no single source of truth. Circle consolidates these into one login, one experience.</div>
+      <div class="stack-section-sub">Today members jump between 4+ platforms. Circle brings the core community experience into one login — while working alongside existing tools where they're stronger.</div>
       <div class="one-source">
-        <h2>Circle as the Member Hub — One Source of Truth</h2>
+        <h2>Circle as the Member Hub — What It Can and Can't Do</h2>
         <div class="one-source-grid">
-          <div class="one-source-item">
+          <div class="one-source-item" style="border-color:rgba(110,231,183,0.5)">
             <div class="icon">💬</div>
             <div class="name">Community & Discussions</div>
-            <div class="was">was: Higher Logic</div>
+            <div class="was" style="color:#6EE7B7">✓ Full replacement for Higher Logic</div>
           </div>
           <div class="one-source-item">
             <div class="icon">📅</div>
-            <div class="name">Events & Committee RSVPs</div>
-            <div class="was">was: Eventbrite + Higher Logic + Luma</div>
+            <div class="name">Internal Committee Events</div>
+            <div class="was">Supplements Eventbrite/Luma — keep those for public events and recruitment</div>
           </div>
           <div class="one-source-item">
             <div class="icon">📚</div>
             <div class="name">Courses & Learning</div>
-            <div class="was">was: PathLMS / Momentive</div>
+            <div class="was">Possible — untested; evaluate in Phase 2</div>
           </div>
           <div class="one-source-item">
             <div class="icon">👤</div>
-            <div class="name">Member Directory & CRM</div>
-            <div class="was">was: MemberPress + Copper CRM</div>
+            <div class="name">Member Directory</div>
+            <div class="was">Lightweight CRM (notes, tags) — not a full CRM like Copper or HubSpot</div>
           </div>
           <div class="one-source-item">
             <div class="icon">🎁</div>
             <div class="name">Member Benefits & Codes</div>
-            <div class="was">was: Email + Newsletter</div>
+            <div class="was">Segmented access and paywalling works well; individual unique codes per member is more complicated</div>
           </div>
           <div class="one-source-item">
             <div class="icon">🙋</div>
             <div class="name">Volunteer Coordination</div>
-            <div class="was">was: Campground + Jotform + Google Sheets</div>
+            <div class="was">Spaces for opt-in and sign-ups; may still need external tools for tracking</div>
           </div>
           <div class="one-source-item">
             <div class="icon">📋</div>
             <div class="name">Surveys & Forms</div>
-            <div class="was">was: Jotform + Typeform + Google Forms</div>
+            <div class="was" style="color:#FCA5A5">Polls only — keep Jotform/Typeform for complex forms and applications</div>
           </div>
-          <div class="one-source-item">
+          <div class="one-source-item" style="border-color:rgba(110,231,183,0.5)">
             <div class="icon">📢</div>
             <div class="name">Announcements & News</div>
-            <div class="was">was: Mailchimp + Social Media only</div>
+            <div class="was" style="color:#6EE7B7">✓ Strong — email automation, push notifications</div>
           </div>
         </div>
       </div>
@@ -982,14 +999,14 @@ section:first-of-type{padding-top:40px}
     <!-- Membership tools replacement -->
     <div class="tp-section">
       <span class="tp-section-tag">Membership Team Tools</span>
-      <div class="stack-section-title">What Circle Replaces for Membership</div>
-      <div class="stack-section-sub">These are the tools most directly impacted by switching to Circle.</div>
+      <div class="stack-section-title">How Circle Interacts with Membership Tools</div>
+      <div class="stack-section-sub">An honest look at what Circle replaces, supplements, and can't handle.</div>
       <table class="stack-table">
         <thead>
           <tr>
             <th>Current Tool</th>
             <th>What It Does</th>
-            <th>Circle Equivalent</th>
+            <th>Circle's Role</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -1003,31 +1020,31 @@ section:first-of-type{padding-top:40px}
           <tr>
             <td>MemberPress</td>
             <td>Memberships + payment source of truth</td>
-            <td>Circle Membership CRM — member data, access levels, SSO</td>
-            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+            <td>Circle has lightweight member management (notes, tags, access levels) — not a full CRM but may be sufficient for some needs</td>
+            <td><span class="stack-badge badge-maybe">◐ Evaluate</span></td>
           </tr>
           <tr>
             <td>Jotform ($1,068/yr)</td>
             <td>Surveys, leadership nominations, volunteer recruitment</td>
-            <td>Circle Forms & Automations</td>
-            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+            <td>Circle has polls but not complex forms — keep Jotform for surveys, applications, and nominations</td>
+            <td><span class="stack-badge badge-keep">— Keep</span></td>
           </tr>
           <tr>
             <td>Typeform ($315/yr)</td>
             <td>Surveys, leadership nominations</td>
-            <td>Circle Forms</td>
-            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+            <td>Same as Jotform — Circle's form capabilities are limited to polls</td>
+            <td><span class="stack-badge badge-keep">— Keep</span></td>
           </tr>
           <tr>
             <td>Campground</td>
             <td>CA volunteer recruitment site</td>
-            <td>Circle Spaces — volunteer-specific space with applications</td>
-            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+            <td>Circle Spaces could handle volunteer opt-in and communication; unclear if it handles full recruitment and applications</td>
+            <td><span class="stack-badge badge-maybe">◐ Evaluate</span></td>
           </tr>
           <tr>
             <td>Copper CRM ($17,640/yr)</td>
             <td>Member data management</td>
-            <td>Circle Member CRM + Headless API integration</td>
+            <td>Circle has basic member notes and tags via Headless API — significantly lighter than Copper</td>
             <td><span class="stack-badge badge-maybe">◐ Evaluate Further</span></td>
           </tr>
         </tbody>
@@ -1037,40 +1054,40 @@ section:first-of-type{padding-top:40px}
     <!-- Events tools -->
     <div class="tp-section">
       <span class="tp-section-tag">Events Team Tools</span>
-      <div class="stack-section-title">Events & Calendar Consolidation</div>
-      <div class="stack-section-sub">Members currently navigate between Eventbrite, Higher Logic events, and Luma. Circle consolidates this.</div>
+      <div class="stack-section-title">Events — Supplement, Don't Replace</div>
+      <div class="stack-section-sub">Eventbrite and Luma bring organic traffic and act as a member recruitment funnel. Circle can handle internal community events, but should supplement — not replace — public-facing event platforms.</div>
       <table class="stack-table">
         <thead>
           <tr>
             <th>Current Tool</th>
             <th>What It Does</th>
-            <th>Circle Equivalent</th>
+            <th>Circle's Role</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Eventbrite</td>
-            <td>Event platform — public registrations</td>
-            <td>Circle Events — RSVP, calendar sync, event discussions</td>
-            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+            <td>Event platform — public registrations and organic discovery</td>
+            <td>Keep for public events — drives organic traffic and member recruitment. Circle can handle internal committee meetings.</td>
+            <td><span class="stack-badge badge-keep">— Keep</span></td>
           </tr>
           <tr>
             <td>Luma</td>
             <td>Event platform</td>
-            <td>Circle Events</td>
-            <td><span class="stack-badge badge-maybe">◐ Potential Replace</span></td>
+            <td>Keep for same reasons as Eventbrite — part of the recruitment funnel</td>
+            <td><span class="stack-badge badge-keep">— Keep</span></td>
           </tr>
           <tr>
             <td>Higher Logic Events</td>
             <td>Committee meeting RSVPs (broken)</td>
-            <td>Circle Events — working RSVP with calendar sync</td>
-            <td><span class="stack-badge badge-replace">✓ Direct Replace</span></td>
+            <td>Circle Events — internal committee event RSVPs (not a perfect replacement but functional)</td>
+            <td><span class="stack-badge badge-replace">✓ Replace</span></td>
           </tr>
           <tr>
             <td>Swoogo</td>
             <td>Virtual event platform</td>
-            <td>Keep for large virtual events — Circle handles smaller community events</td>
+            <td>Keep for large virtual events</td>
             <td><span class="stack-badge badge-keep">— Keep</span></td>
           </tr>
         </tbody>
@@ -1112,27 +1129,27 @@ section:first-of-type{padding-top:40px}
       </div>
     </div>
 
-    <!-- Savings summary -->
+    <!-- Cost summary -->
     <div class="tp-section">
       <span class="tp-section-tag">Cost Impact</span>
-      <div class="stack-section-title">Potential Annual Savings</div>
+      <div class="stack-section-title">What This Means Financially</div>
       <div class="stack-savings" style="margin-top:16px">
         <div class="savings-card">
-          <div class="amt">$1,383</div>
-          <div class="lbl">Jotform + Typeform<br>replaced by Circle Forms</div>
+          <div class="amt" style="color:var(--g700)">~$10K</div>
+          <div class="lbl">Circle Plus annual cost<br><strong>Cost-neutral</strong> vs. $10,320 for Higher Logic</div>
+        </div>
+        <div class="savings-card">
+          <div class="amt" style="color:var(--a600)">$0</div>
+          <div class="lbl">Net additional cost<br>We're paying this already for Higher Logic</div>
         </div>
         <div class="savings-card">
           <div class="amt" style="color:var(--a600)">TBD</div>
-          <div class="lbl">PathLMS / Momentive<br>if courses move to Circle</div>
-        </div>
-        <div class="savings-card">
-          <div class="amt" style="color:var(--a600)">$17,640</div>
-          <div class="lbl">Copper CRM<br>if Circle handles member data (evaluate)</div>
+          <div class="lbl">Potential future savings<br>if Circle replaces PathLMS or reduces Copper dependency</div>
         </div>
       </div>
-      <div class="s-insight ins-g" style="margin-top:12px">
-        <div class="ins-label">Plus Staff Time Savings</div>
-        <p>Emailing committee members about updates · Onboarding new members by email · Troubleshooting RSVPs · Bringing in GetUWired to fix CRM issues · Staff hours currently spent being the bridge between leaders and members</p>
+      <div class="s-insight ins-a" style="margin-top:12px">
+        <div class="ins-label">Honest Assessment — What Circle Doesn't Replace</div>
+        <p>Based on feedback from a Circle user: <strong>Jotform, Typeform, Eventbrite, and Luma should be kept.</strong> Circle doesn't have complex form capabilities, and Eventbrite/Luma are part of our member recruitment funnel. The primary cost value of Circle is not tool consolidation savings — it's the <strong>cost-neutral platform upgrade</strong> from Higher Logic plus staff time recovered from reduced manual communication work (~26–40 hours/month).</p>
       </div>
     </div>
 
